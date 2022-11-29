@@ -1,0 +1,10 @@
+vich_uploader:
+    db_driver: orm
+    metadata: 
+        type: attribute
+
+    mappings:
+       apk_image:
+           uri_prefix: /storage/img
+           upload_destination: '%kernel.project_dir%/public/storage/img'
+           namer: Vich\UploaderBundle\Naming\SmartUniqueNamer

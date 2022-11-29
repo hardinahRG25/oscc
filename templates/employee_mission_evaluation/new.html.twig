@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New EmployeeMissionEvaluation{% endblock %}
+
+{% block body %}
+    <h1>Create new EmployeeMissionEvaluation</h1>
+
+    {{ include('employee_mission_evaluation/_form.html.twig') }}
+
+    <a href="{{ path('app_employee_mission_evaluation_index') }}">back to list</a>
+{% endblock %}

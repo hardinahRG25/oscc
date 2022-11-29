@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle formation
+{% endblock %}
+
+{% block body %}
+	<h3>Nouvelle formation</h3>
+
+	{{ include('training/_form.html.twig') }}
+
+	<a href="{{ path('app_training_index') }}">
+		<i class="material-icons text-sm me-2">arrow_back</i>Liste</a>
+{% endblock %}

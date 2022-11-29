@@ -1,0 +1,121 @@
+<aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3   bg-gradient-dark" id="sidenav-main">
+	<div class="sidenav-header">
+		<i class="fas fa-times p-3 cursor-pointer text-white opacity-5 position-absolute end-0 top-0 d-none d-xl-none" aria-hidden="true" id="iconSidenav"></i>
+		<a class="navbar-brand m-0" href="#">
+			<span class="ms-1 font-weight-bold text-white">Outil de suivi collaborateur</span>
+		</a>
+	</div>
+	<hr class="horizontal light mt-0 mb-2">
+	<div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
+		<ul
+			class="navbar-nav">
+			<!--Dashboard Menu-->
+			<li class="nav-item">
+				<a class="nav-link text-white {% if 'app_dashboard' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_dashboard') }}">
+					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="fa fa-tachometer" aria-hidden="true"></i>
+					</div>
+					<span class="nav-link-text ms-1">Tableau de bord</span>
+				</a>
+			</li>
+			<!--End Dashboard Menu-->
+			{% if 'ROLE_ADMIN' in app.user.roles %}
+				<!-- Collborateur Menu -->
+				<li class="nav-item mt-3">
+					<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Collaborateur</h6>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white indentation-side {% if 'app_user_index' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_user_index') }}">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">engineering</i>
+						</div>
+						<span class="nav-link-text ms-1">Liste</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white indentation-side {% if 'app_user_new' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_user_new') }}">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">add</i>
+						</div>
+						<span class="nav-link-text ms-1">Nouveau</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white indentation-side" href="#">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">mood</i>
+						</div>
+						<span class="nav-link-text ms-1">Mood Collaborateur</span>
+					</a>
+				</li>
+				<hr class="horizontal light mt-0 mb-2">
+				<!-- End Collborateur Menu -->
+				<!-- Client Menu-->
+					<li class="nav-item mt-3"> <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Client</h6>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white indentation-side {% if 'app_customer_index' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_customer_index') }}">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">group</i>
+						</div>
+						<span class="nav-link-text ms-1">Liste</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white indentation-side {% if 'app_customer_new' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_customer_new') }}">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">add</i>
+						</div>
+						<span class="nav-link-text ms-1">Nouveau</span>
+					</a>
+				</li>
+				<hr
+				class="horizontal light mt-0 mb-2">
+			<!-- End Client Menu-->
+			{% endif %}
+			<!-- Missions Menu -->
+			<li class="nav-item mt-3">
+				<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Mission</h6>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white indentation-side {% if 'app_mission_index' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_mission_index') }}">
+					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="material-icons opacity-10">badge</i>
+					</div>
+					<span class="nav-link-text ms-1">Liste</span>
+				</a>
+			</li>
+			{% if 'ROLE_ADMIN' in app.user.roles %}
+				<li class="nav-item">
+					<a class="nav-link text-white indentation-side {% if 'app_mission_new' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_mission_new') }}">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">add</i>
+						</div>
+						<span class="nav-link-text ms-1">Nouvelle</span>
+					</a>
+				</li>
+			{% endif %}
+			<hr class="horizontal light mt-0 mb-2">
+			<!-- End Missions Menu -->
+			<!-- Account -->
+				<li class="nav-item mt-3"> <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Mon compte</h6>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white indentation-side " href="#">
+					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="material-icons opacity-10">person</i>
+					</div>
+					<span class="nav-link-text ms-1">Profile</span>
+				</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-white indentation-side " href="{{ path('app_logout') }}">
+					<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+						<i class="material-icons opacity-10">logout</i>
+					</div>
+					<span class="nav-link-text ms-1">Se déconnecter</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+</aside>

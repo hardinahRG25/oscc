@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Formation
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-12">
+			<div class="card my-4">
+				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+						<div class="row justify-content-md-center">
+							<div class="col-10">
+								<span>
+									<h6 class="text-white text-capitalize ps-3">formations</h6>
+								</span>
+							</div>
+							{% if 'ROLE_ADMIN' in app.user.roles %}
+								<div class="col-2">
+									<a class="btn bg-gradient-light mb-0" href="{{ path('app_training_new') }}">
+										<i class="material-icons text-sm">add</i>
+										&nbsp;&nbsp;Nouvelle formation
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="card-body pt-4 p-3">
+					<ul class="list-group">
+						{% for training in trainings %}
+							<li class="list-group-item border-0 d-flex p-4 mb-2 bg-gray-100 border-radius-lg">
+								<div class="d-flex flex-column col-3">
+									<h6 class="mb-3 text-sm">{{ training.training }}</h6>
+									<span class="mb-2 text-xs">Objectif :
+										<span class="text-dark font-weight-bold ms-sm-2">{{ training.objective }}</span>
+									</span>
+									<span class="mb-2 text-xs">Source :
+										<span class="text-dark ms-sm-2 font-weight-bold">{{ training.source }}</span>
+									</span>
+									<span class="text-xs">Progression:
+										<span class="text-dark ms-sm-2 font-weight-bold">{{ training.progress }}</span>
+									</span>
+								</div>
+								<div class="d-flex flex-column col-3">
+									<span class="mb-2 text-xs">Début formation:
+										<span class="text-dark ms-sm-2 font-weight-bold">{{ training.dateCreateInfo ? training.dateCreateInfo|date('Y-m-d') : '--/--/--' }}</span>
+									</span>
+									<h6 class="mb-3 text-sm">Description</h6>
+									<p class="text-xs font-weight-bold ms-sm-2">{{ training.description ? training.description : '' }}
+									</p>
+								</div>
+								<div class="d-flex flex-column col-3">
+									<h6 class="mb-3 text-sm">Remarque(s)</h6>
+									<p class="text-xs font-weight-bold ms-sm-2">{{ training.note ? training.note : '' }}
+									</p>
+								</div>
+								{% if 'ROLE_ADMIN' in app.user.roles %}
+									<div class="ms-auto d-flex flex-end">
+										{{ include('training/_delete_form.html.twig') }}
+									</div>
+									<div class="d-flex flex-end">
+										<a class="btn btn-link text-dark px-3 mb-0" href="{{ path('app_training_edit', {'id': training.id}) }}">
+											<i class="material-icons text-sm me-2">edit</i>Modifier</a>
+									</div>
+								{% endif %}
+							</li>
+						{% else %}
+							<div>
+								<p>Aucune formation</p>
+							</div>
+						{% endfor %}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

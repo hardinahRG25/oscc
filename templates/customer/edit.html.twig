@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification client
+{% endblock %}
+
+{% block body %}
+	<h3>Modification client</h3>
+
+	{{ include('customer/_form.html.twig', {'button_label': 'Enregistrer'}) }}
+{% endblock %}

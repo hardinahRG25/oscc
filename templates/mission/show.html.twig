@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mission{% endblock %}
+
+{% block body %}
+    <h1>Mission</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ mission.id }}</td>
+            </tr>
+            <tr>
+                <th>Job</th>
+                <td>{{ mission.job }}</td>
+            </tr>
+            <tr>
+                <th>Date_start</th>
+                <td>{{ mission.dateStart ? mission.dateStart|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Date_end</th>
+                <td>{{ mission.dateEnd ? mission.dateEnd|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Mission_type</th>
+                <td>{{ mission.missionType }}</td>
+            </tr>
+            <tr>
+                <th>Reason_contract_end</th>
+                <td>{{ mission.reasonContractEnd }}</td>
+            </tr>
+            <tr>
+                <th>Date_create_info</th>
+                <td>{{ mission.dateCreateInfo ? mission.dateCreateInfo|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{ mission.status }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mission_index') }}">back to list</a>
+
+    <a href="{{ path('app_mission_edit', {'id': mission.id}) }}">edit</a>
+
+    {{ include('mission/_delete_form.html.twig') }}
+{% endblock %}

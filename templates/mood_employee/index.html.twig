@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}MoodEmployee index{% endblock %}
+
+{% block body %}
+    <h1>MoodEmployee index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateMood</th>
+                <th>Customer_back</th>
+                <th>Actions</th>
+                <th>Note</th>
+                <th>Remark</th>
+                <th>Self_notation</th>
+                <th>Self_remark</th>
+                <th>Novity_note</th>
+                <th>Novity_back</th>
+                <th>Novity_remark</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for mood_employee in mood_employees %}
+            <tr>
+                <td>{{ mood_employee.id }}</td>
+                <td>{{ mood_employee.dateMood ? mood_employee.dateMood|date('Y-m-d') : '' }}</td>
+                <td>{{ mood_employee.customerBack }}</td>
+                <td>{{ mood_employee.actions }}</td>
+                <td>{{ mood_employee.note }}</td>
+                <td>{{ mood_employee.remark }}</td>
+                <td>{{ mood_employee.selfNotation }}</td>
+                <td>{{ mood_employee.selfRemark }}</td>
+                <td>{{ mood_employee.novityNote }}</td>
+                <td>{{ mood_employee.novityBack }}</td>
+                <td>{{ mood_employee.novityRemark }}</td>
+                <td>{{ mood_employee.createdAt ? mood_employee.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ mood_employee.updatedAt ? mood_employee.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_mood_employee_show', {'id': mood_employee.id}) }}">show</a>
+                    <a href="{{ path('app_mood_employee_edit', {'id': mood_employee.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_mood_employee_new') }}">Create new</a>
+{% endblock %}

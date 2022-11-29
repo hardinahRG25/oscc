@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CustomerCare index{% endblock %}
+
+{% block body %}
+    <h1>CustomerCare index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>DateShare</th>
+                <th>NoteCollaboration</th>
+                <th>Cust_relationship_info</th>
+                <th>Cust_relationship_note</th>
+                <th>Business_info</th>
+                <th>Business_note</th>
+                <th>Cust_back_info</th>
+                <th>Cust_back_note</th>
+                <th>Employee_back_info</th>
+                <th>Employee_back_note</th>
+                <th>Average_note</th>
+                <th>Average_score</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for customer_care in customer_cares %}
+            <tr>
+                <td>{{ customer_care.id }}</td>
+                <td>{{ customer_care.dateShare ? customer_care.dateShare|date('Y-m-d') : '' }}</td>
+                <td>{{ customer_care.noteCollaboration }}</td>
+                <td>{{ customer_care.custRelationshipInfo }}</td>
+                <td>{{ customer_care.custRelationshipNote }}</td>
+                <td>{{ customer_care.businessInfo }}</td>
+                <td>{{ customer_care.businessNote }}</td>
+                <td>{{ customer_care.custBackInfo }}</td>
+                <td>{{ customer_care.custBackNote }}</td>
+                <td>{{ customer_care.employeeBackInfo }}</td>
+                <td>{{ customer_care.employeeBackNote }}</td>
+                <td>{{ customer_care.averageNote }}</td>
+                <td>{{ customer_care.averageScore }}</td>
+                <td>{{ customer_care.createdAt ? customer_care.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ customer_care.updatedAt ? customer_care.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_client_care_show', {'id': customer_care.id}) }}">show</a>
+                    <a href="{{ path('app_client_care_edit', {'id': customer_care.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="16">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_care_new') }}">Create new</a>
+{% endblock %}

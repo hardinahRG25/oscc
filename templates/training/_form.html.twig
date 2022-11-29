@@ -1,0 +1,41 @@
+{{ form_start(form) }}
+<div class="row">
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.training, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.training, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.objective, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.objective, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.source, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.source, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.progress, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.progress, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic is-filled">
+			{{ form_widget(form.description, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic is-filled">
+			{{ form_widget(form.note, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+</div>
+<div class="d-flex justify-content-end mt-6">
+	<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}

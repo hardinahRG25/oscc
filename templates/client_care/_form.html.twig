@@ -1,0 +1,82 @@
+{{ form_start(form) }}
+<div class="row">
+	<div class="col-md-4">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.dateShare, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.dateShare, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-4">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.customer, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.customer, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.noteCollaboration, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.noteCollaboration, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+</div>
+<h3>Note client</h3>
+<div class="row">
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.cust_relationship_info, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.cust_relationship_info, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.business_info, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.business_info, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.cust_back_info, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.cust_back_info, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.employee_back_info, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.employee_back_info, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_widget(form.cust_relationship_note, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_widget(form.business_note, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_widget(form.cust_back_note, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_widget(form.employee_back_note, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-12">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.average_note, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.average_note, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="d-flex justify-content-end">
+		<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+	</div>
+</div>
+{{ form_end(form) }}

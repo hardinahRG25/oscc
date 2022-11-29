@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EmployeeNovityEvaluation{% endblock %}
+
+{% block body %}
+    <h1>EmployeeNovityEvaluation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employee_novity_evaluation.id }}</td>
+            </tr>
+            <tr>
+                <th>Integration</th>
+                <td>{{ employee_novity_evaluation.integration }}</td>
+            </tr>
+            <tr>
+                <th>Model</th>
+                <td>{{ employee_novity_evaluation.model }}</td>
+            </tr>
+            <tr>
+                <th>Communication</th>
+                <td>{{ employee_novity_evaluation.communication }}</td>
+            </tr>
+            <tr>
+                <th>Professionnal</th>
+                <td>{{ employee_novity_evaluation.professionnal }}</td>
+            </tr>
+            <tr>
+                <th>Excellence</th>
+                <td>{{ employee_novity_evaluation.excellence }}</td>
+            </tr>
+            <tr>
+                <th>Audacity</th>
+                <td>{{ employee_novity_evaluation.audacity }}</td>
+            </tr>
+            <tr>
+                <th>Humanity</th>
+                <td>{{ employee_novity_evaluation.humanity }}</td>
+            </tr>
+            <tr>
+                <th>Examiner</th>
+                <td>{{ employee_novity_evaluation.examiner }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ employee_novity_evaluation.notes }}</td>
+            </tr>
+            <tr>
+                <th>Date_creation_info</th>
+                <td>{{ employee_novity_evaluation.dateCreationInfo ? employee_novity_evaluation.dateCreationInfo|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_novity_evaluation_index') }}">back to list</a>
+
+    <a href="{{ path('app_employee_novity_evaluation_edit', {'id': employee_novity_evaluation.id}) }}">edit</a>
+
+    {{ include('employee_novity_evaluation/_delete_form.html.twig') }}
+{% endblock %}

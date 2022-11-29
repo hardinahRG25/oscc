@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modification collaborateur{% endblock %}
+
+{% block body %}
+    <h3>Modification collaborateur</h3>
+
+    {{ include('user/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+    <a href="{{ path('app_user_index') }}">
+        <i class="material-icons text-sm me-2">arrow_back</i>Liste</a>
+{% endblock %}

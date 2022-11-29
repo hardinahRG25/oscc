@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EmployeeMissionEvaluation index{% endblock %}
+
+{% block body %}
+    <h1>EmployeeMissionEvaluation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Technical_skills</th>
+                <th>Productivity</th>
+                <th>Rigour</th>
+                <th>Autonomy</th>
+                <th>Communication</th>
+                <th>Reactivity</th>
+                <th>Disponibility</th>
+                <th>Involvement</th>
+                <th>Proactive</th>
+                <th>Initiative</th>
+                <th>Teamwork</th>
+                <th>Versality</th>
+                <th>Notes</th>
+                <th>Date_create_info</th>
+                <th>Examiner</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee_mission_evaluation in employee_mission_evaluations %}
+            <tr>
+                <td>{{ employee_mission_evaluation.id }}</td>
+                <td>{{ employee_mission_evaluation.technicalSkills }}</td>
+                <td>{{ employee_mission_evaluation.productivity }}</td>
+                <td>{{ employee_mission_evaluation.rigour }}</td>
+                <td>{{ employee_mission_evaluation.autonomy }}</td>
+                <td>{{ employee_mission_evaluation.communication }}</td>
+                <td>{{ employee_mission_evaluation.reactivity }}</td>
+                <td>{{ employee_mission_evaluation.disponibility }}</td>
+                <td>{{ employee_mission_evaluation.involvement }}</td>
+                <td>{{ employee_mission_evaluation.proactive }}</td>
+                <td>{{ employee_mission_evaluation.initiative }}</td>
+                <td>{{ employee_mission_evaluation.teamwork }}</td>
+                <td>{{ employee_mission_evaluation.versality }}</td>
+                <td>{{ employee_mission_evaluation.notes }}</td>
+                <td>{{ employee_mission_evaluation.dateCreateInfo ? employee_mission_evaluation.dateCreateInfo|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ employee_mission_evaluation.examiner }}</td>
+                <td>
+                    <a href="{{ path('app_employee_mission_evaluation_show', {'id': employee_mission_evaluation.id}) }}">show</a>
+                    <a href="{{ path('app_employee_mission_evaluation_edit', {'id': employee_mission_evaluation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="17">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_mission_evaluation_new') }}">Create new</a>
+{% endblock %}

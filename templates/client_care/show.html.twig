@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CustomerCare{% endblock %}
+
+{% block body %}
+    <h1>CustomerCare</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ customer_care.id }}</td>
+            </tr>
+            <tr>
+                <th>DateShare</th>
+                <td>{{ customer_care.dateShare ? customer_care.dateShare|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NoteCollaboration</th>
+                <td>{{ customer_care.noteCollaboration }}</td>
+            </tr>
+            <tr>
+                <th>Cust_relationship_info</th>
+                <td>{{ customer_care.custRelationshipInfo }}</td>
+            </tr>
+            <tr>
+                <th>Cust_relationship_note</th>
+                <td>{{ customer_care.custRelationshipNote }}</td>
+            </tr>
+            <tr>
+                <th>Business_info</th>
+                <td>{{ customer_care.businessInfo }}</td>
+            </tr>
+            <tr>
+                <th>Business_note</th>
+                <td>{{ customer_care.businessNote }}</td>
+            </tr>
+            <tr>
+                <th>Cust_back_info</th>
+                <td>{{ customer_care.custBackInfo }}</td>
+            </tr>
+            <tr>
+                <th>Cust_back_note</th>
+                <td>{{ customer_care.custBackNote }}</td>
+            </tr>
+            <tr>
+                <th>Employee_back_info</th>
+                <td>{{ customer_care.employeeBackInfo }}</td>
+            </tr>
+            <tr>
+                <th>Employee_back_note</th>
+                <td>{{ customer_care.employeeBackNote }}</td>
+            </tr>
+            <tr>
+                <th>Average_note</th>
+                <td>{{ customer_care.averageNote }}</td>
+            </tr>
+            <tr>
+                <th>Average_score</th>
+                <td>{{ customer_care.averageScore }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ customer_care.createdAt ? customer_care.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ customer_care.updatedAt ? customer_care.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_client_care_index') }}">back to list</a>
+
+    <a href="{{ path('app_client_care_edit', {'id': customer_care.id}) }}">edit</a>
+
+    {{ include('client_care/_delete_form.html.twig') }}
+{% endblock %}

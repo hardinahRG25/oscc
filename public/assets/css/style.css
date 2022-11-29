@@ -1,0 +1,63 @@
+/**
+* Height sidebar
+**/
+
+.navbar-vertical.navbar-expand-xs .navbar-collapse {
+    height: calc(100vh - 200px) !important;
+}
+
+/**
+* Customer table
+*/
+
+.action-customer {
+    max-width: 130px !important;
+}
+
+
+/**
+* require area
+*/
+
+.required::after {
+    content: "*";
+    color: red;
+    margin-left: 0.5rem;
+}
+
+/**
+* navigation add item
+*/
+
+.nav-add {
+    margin-bottom: 2rem;
+}
+
+
+/**
+* table responsive
+*/
+.dataTables_wrapper {
+    padding: 1rem !important;
+}
+
+/**
+* sidebar
+*/
+
+.indentation-side {
+    margin-left: 3rem !important;
+}
+
+
+/**
+* datatable
+*/
+
+th {
+    text-transform: lowercase !important;
+}
+
+th:first-letter {
+    text-transform: uppercase !important;
+}

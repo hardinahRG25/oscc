@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Missions
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-12">
+			<div class="card my-4">
+				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+						<div class="row justify-content-md-center">
+							<div class="col-10">
+								<span>
+									<h6 class="text-white text-capitalize ps-3">Liste des affections/Missions</h6>
+								</span>
+							</div>
+							{% if 'ROLE_ADMIN' in app.user.roles %}
+								<div class="col-2">
+									<a class="btn bg-gradient-light mb-0" href="{{ path('app_mission_new') }}">
+										<i class="material-icons text-sm">add</i>
+										&nbsp;&nbsp;Nouveau
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="card-body pt-4 p-3">
+					<div id="list" class="table-responsive p-0">
+						chargement ...
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	{% block javascripts %}
+		<script type="text/javascript" src="{{ asset('assets/datatables/js/datatables.min.js') }}"></script>
+		<script type="text/javascript" src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
+		<script type="text/javascript">
+			$(function () {
+$('#list').initDataTables({{ datatable_settings(datatable) }}, {
+searching: true,
+fixedHeader: true,
+responsive: true,
+language: {
+"lengthMenu": "Affichage de _MENU_ enregistrements par page",
+"zeroRecords": "Aucun élément",
+"info": "Page _PAGE_ sur _PAGES_",
+"infoEmpty": "Aucune mission disponible",
+"infoFiltered": "(filtré sur _MAX_ élément(s))",
+"search": "Rechercher:",
+"processing": "Chargement ... ",
+"paginate": {
+"first": "Début",
+"last": "Fin",
+"next": "Suivant",
+"previous": "Précédent"
+}
+}
+});
+});
+		</script>
+	{% endblock %}
+{% endblock %}

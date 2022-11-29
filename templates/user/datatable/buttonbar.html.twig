@@ -1,0 +1,11 @@
+<div class="ms-auto d-flex flex-end">
+    <form method="post" action="{{ path('app_user_delete', {'id': row.id}) }}" onsubmit="return confirm('Êtes-vous sûrs de suppimer ce collaborateur ?');">
+        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ row.id) }}">
+        <button class="btn text-danger text-gradient px-3 mb-0">
+            <i class="material-icons text-sm me-2">delete</i>Supprimer</button>
+    </form>
+</div>
+<div class="d-flex flex-end">
+    <a class="btn btn-link text-dark px-3 mb-0" href="{{ path('app_user_edit', {'id': row.id}) }}">
+        <i class="material-icons text-sm me-2">edit</i>Modifier</a>
+</div>

@@ -1,0 +1,82 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EmployeeMissionEvaluation{% endblock %}
+
+{% block body %}
+    <h1>EmployeeMissionEvaluation</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ employee_mission_evaluation.id }}</td>
+            </tr>
+            <tr>
+                <th>Technical_skills</th>
+                <td>{{ employee_mission_evaluation.technicalSkills }}</td>
+            </tr>
+            <tr>
+                <th>Productivity</th>
+                <td>{{ employee_mission_evaluation.productivity }}</td>
+            </tr>
+            <tr>
+                <th>Rigour</th>
+                <td>{{ employee_mission_evaluation.rigour }}</td>
+            </tr>
+            <tr>
+                <th>Autonomy</th>
+                <td>{{ employee_mission_evaluation.autonomy }}</td>
+            </tr>
+            <tr>
+                <th>Communication</th>
+                <td>{{ employee_mission_evaluation.communication }}</td>
+            </tr>
+            <tr>
+                <th>Reactivity</th>
+                <td>{{ employee_mission_evaluation.reactivity }}</td>
+            </tr>
+            <tr>
+                <th>Disponibility</th>
+                <td>{{ employee_mission_evaluation.disponibility }}</td>
+            </tr>
+            <tr>
+                <th>Involvement</th>
+                <td>{{ employee_mission_evaluation.involvement }}</td>
+            </tr>
+            <tr>
+                <th>Proactive</th>
+                <td>{{ employee_mission_evaluation.proactive }}</td>
+            </tr>
+            <tr>
+                <th>Initiative</th>
+                <td>{{ employee_mission_evaluation.initiative }}</td>
+            </tr>
+            <tr>
+                <th>Teamwork</th>
+                <td>{{ employee_mission_evaluation.teamwork }}</td>
+            </tr>
+            <tr>
+                <th>Versality</th>
+                <td>{{ employee_mission_evaluation.versality }}</td>
+            </tr>
+            <tr>
+                <th>Notes</th>
+                <td>{{ employee_mission_evaluation.notes }}</td>
+            </tr>
+            <tr>
+                <th>Date_create_info</th>
+                <td>{{ employee_mission_evaluation.dateCreateInfo ? employee_mission_evaluation.dateCreateInfo|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Examiner</th>
+                <td>{{ employee_mission_evaluation.examiner }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_mission_evaluation_index') }}">back to list</a>
+
+    <a href="{{ path('app_employee_mission_evaluation_edit', {'id': employee_mission_evaluation.id}) }}">edit</a>
+
+    {{ include('employee_mission_evaluation/_delete_form.html.twig') }}
+{% endblock %}

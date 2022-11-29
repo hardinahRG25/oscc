@@ -1,0 +1,68 @@
+{{ form_start(form) }}
+<div class="row">
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic is-filled my-3">
+			{{ form_label(form.job, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.job, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic is-filled my-3">
+			{{ form_label(form.mission_type, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.mission_type, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic my-3 is-filled">
+			{{ form_label(form.techPrincipal, null, {'label_attr': {'class':'form-label'}}) }}
+			{% for field in form.techPrincipal %}
+				<div style="min-width: 12%;">
+					{{ form_widget(field) }}
+					{{ form_label(field) }}
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="input-group input-group-dynamic is-filled my-3 is-filled">
+			{{ form_label(form.status, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.status, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic is-filled my-3 is-filled">
+			{{ form_label(form.date_start, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.date_start, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic is-filled my-3 is-filled">
+			{{ form_label(form.date_end, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.date_end, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic is-filled my-3 is-filled">
+			{{ form_label(form.employee, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.employee, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-3">
+		<div class="input-group input-group-dynamic is-filled my-3 is-filled">
+			{{ form_label(form.customer, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.customer, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+</div>
+<div class="input-group input-group-dynamic">
+	{{ form_widget(form.reason_contract_end, {'attr': {'class':'form-control'}}) }}
+</div>
+<div class="d-flex justify-content-end mt-4">
+	<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}
+
+{% block javascripts %}
+	<script type="text/javascript" src="{{ asset('assets/js/plugins/jquery-3.6.0.min.js') }}"></script>
+	<script type="text/javascript" src="{{ asset('assets/js/custom/mission.js') }}"></script>
+{% endblock %}

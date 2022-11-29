@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EmployeeNovityEvaluation index{% endblock %}
+
+{% block body %}
+    <h1>EmployeeNovityEvaluation index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Integration</th>
+                <th>Model</th>
+                <th>Communication</th>
+                <th>Professionnal</th>
+                <th>Excellence</th>
+                <th>Audacity</th>
+                <th>Humanity</th>
+                <th>Examiner</th>
+                <th>Notes</th>
+                <th>Date_creation_info</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for employee_novity_evaluation in employee_novity_evaluations %}
+            <tr>
+                <td>{{ employee_novity_evaluation.id }}</td>
+                <td>{{ employee_novity_evaluation.integration }}</td>
+                <td>{{ employee_novity_evaluation.model }}</td>
+                <td>{{ employee_novity_evaluation.communication }}</td>
+                <td>{{ employee_novity_evaluation.professionnal }}</td>
+                <td>{{ employee_novity_evaluation.excellence }}</td>
+                <td>{{ employee_novity_evaluation.audacity }}</td>
+                <td>{{ employee_novity_evaluation.humanity }}</td>
+                <td>{{ employee_novity_evaluation.examiner }}</td>
+                <td>{{ employee_novity_evaluation.notes }}</td>
+                <td>{{ employee_novity_evaluation.dateCreationInfo ? employee_novity_evaluation.dateCreationInfo|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_employee_novity_evaluation_show', {'id': employee_novity_evaluation.id}) }}">show</a>
+                    <a href="{{ path('app_employee_novity_evaluation_edit', {'id': employee_novity_evaluation.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_employee_novity_evaluation_new') }}">Create new</a>
+{% endblock %}
