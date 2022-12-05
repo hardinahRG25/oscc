@@ -11,7 +11,7 @@ $('#edit').click(function () {
         h.push('<th><input type="checkbox"', (this.shown ? ' checked ' : ' '), '/> ', this.text, '</th>');
     });
     h.push('</tr></thead></table></div>');
-    $('#containertable').parent().append(h.join(''));
+    $('#containertable').prepend(h.join(''));
 
     $('.submit').click(function () {
         var showHeaders = $('#tableEditor input').map(function () {
@@ -28,7 +28,6 @@ $('#edit').click(function () {
 
 
         });
-        console.log
         $('#tableEditor').remove();
         return false;
     });
