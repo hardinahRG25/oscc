@@ -64,10 +64,10 @@ th:first-letter {
 
 #tableEditor {
     position: absolute;
-    left: 20px;
-    top: 20px;
+    left: 45px;
+    top: 90px;
     padding: 5px;
     border: 1px solid #000;
-    background: #fff;
+    background: #fadeff;
     z-index: 9999;
 }

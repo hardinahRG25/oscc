@@ -6,12 +6,17 @@ $('#edit').click(function () {
             shown: th.css('display') != 'none'
         };
     });
-    var h = ['<div id="tableEditor"><button class="submit" id="btn-1">Done</button><table><thead><tr>'];
+    var h = ['<div id="tableEditor"><button class="submit" id="btn-1">Afficher</button><table><thead><tr>'];
     $.each(headers, function () {
-        h.push('<th><input type="checkbox"', (this.shown ? ' checked ' : ' '), '/> ', this.text, '</th>');
+        var checked = 'checked';
+        if (this.text === 'Situation familiale') {
+            checked = '';
+        }
+        h.push('<th><input type="checkbox"', (this.shown ? ' ' + checked + ' ' : ' '), ' /> ', this.text, '</th > ');
     });
     h.push('</tr></thead></table></div>');
     $('#containertable').prepend(h.join(''));
+    $('#dt th:nth-child(' + 2 + '), #dt td:nth-child(' + 2 + ')').hide();
 
     $('.submit').click(function () {
         var showHeaders = $('#tableEditor input').map(function () {
