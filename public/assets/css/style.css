@@ -61,3 +61,13 @@ th {
 th:first-letter {
     text-transform: uppercase !important;
 }
+
+#tableEditor {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    padding: 5px;
+    border: 1px solid #000;
+    background: #fff;
+    z-index: 9999;
+}
