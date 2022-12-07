@@ -69,7 +69,7 @@ class EmployeeMissionEvaluationController extends AbstractController
     #[Route('/{id}', name: 'app_employee_mission_evaluation_delete', methods: ['POST'])]
     public function delete(Request $request, EmployeeMissionEvaluation $employeeMissionEvaluation, EmployeeMissionEvaluationRepository $employeeMissionEvaluationRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$employeeMissionEvaluation->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $employeeMissionEvaluation->getId(), $request->request->get('_token'))) {
             $employeeMissionEvaluationRepository->remove($employeeMissionEvaluation, true);
         }
 
