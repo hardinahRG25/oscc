@@ -45,6 +45,6 @@ Run:
 And use the next credentials to login.
 
 - Username : "admin@novity.io"
-- Password : "admin12345"
+- Password : "admin123456"
 
 **APPRECIE**
