@@ -69,7 +69,7 @@ class CustomerCareController extends AbstractController
 	#[Route('/{id}', name: 'app_client_care_delete', methods: ['POST'])]
 	public function delete(Request $request, CustomerCare $customerCare, CustomerCareRepository $customerCareRepository): Response
 	{
-		if ($this->isCsrfTokenValid('delete'.$customerCare->getId(), $request->request->get('_token'))) {
+		if ($this->isCsrfTokenValid('delete' . $customerCare->getId(), $request->request->get('_token'))) {
 			$customerCareRepository->remove($customerCare, true);
 		}
 

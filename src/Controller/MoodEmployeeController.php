@@ -69,7 +69,7 @@ class MoodEmployeeController extends AbstractController
     #[Route('/{id}', name: 'app_mood_employee_delete', methods: ['POST'])]
     public function delete(Request $request, MoodEmployee $moodEmployee, MoodEmployeeRepository $moodEmployeeRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$moodEmployee->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $moodEmployee->getId(), $request->request->get('_token'))) {
             $moodEmployeeRepository->remove($moodEmployee, true);
         }
 
