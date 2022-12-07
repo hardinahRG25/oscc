@@ -37,8 +37,19 @@ class UserController extends AbstractController
 				'label' => 'Nom et Prénom(s)',
 				'propertyPath' => '[fullName]',
 				'searchable' => false,
-				'orderable' => false,
+				'orderable' => true,
 				'globalSearchable' => false
+			])
+			->add('birth_date', DateTimeColumn::class, [
+				'label' => 'Date de naissance',
+				'format' => 'd-m-Y',
+				'searchable' => false,
+			])
+			->add('gender', TextColumn::class, [
+				'label' => 'Genre',
+				'render' => function ($value, $context) {
+					return $this->convert->genderString($value);
+				}
 			])
 			->add('date_entry', DateTimeColumn::class, [
 				'label' => 'Date d\'intégration',
@@ -53,9 +64,17 @@ class UserController extends AbstractController
 				}
 			])
 			->add('matrimonial_status', TextColumn::class, [
-				'label' => 'Situation familiale'
+				'label' => 'Situation familiale',
+				'visible' => false
 			])
-			->add('disctrict', TextColumn::class, [
+			->add('family', TextColumn::class, [
+				'label' => 'Situation familiale',
+				'propertyPath' => '[family]',
+				'searchable' => false,
+				'orderable' => false,
+				'globalSearchable' => false
+			])
+			->add('district', TextColumn::class, [
 				'label' => 'Adresse'
 			])
 			->add('contacts', TextColumn::class, [
@@ -82,8 +101,11 @@ class UserController extends AbstractController
 						->select("
 							u.id,
 							CONCAT(u.lastname, ' ', u.firstname) AS fullName,
+							u.birth_date,
+							u.gender,
 							u.date_entry,
 							u.matrimonial_status,
+							CONCAT(u.matrimonial_status, ', ', u.childNumber) AS family,
 							TIMESTAMPDIFF(MONTH, u.date_entry, CURRENT_TIMESTAMP()) AS monthsCount,
 							u.location,
 							u.district,
