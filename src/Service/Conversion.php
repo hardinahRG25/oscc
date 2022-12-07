@@ -27,4 +27,12 @@ class Conversion
             return sprintf('%s ' . $this->month, $value);
         }
     }
+
+    public function genderString(string $gender): ?string
+    {
+        if ($gender === 'f') {
+            return 'Féminin';
+        }
+        return 'Masculin';
+    }
 }
