@@ -149,6 +149,34 @@
         <source>My account</source>
         <target>Mon compte</target>
       </trans-unit>
+      <trans-unit id="bAksnKA" resname="Basic information">
+        <source>Basic information</source>
+        <target>Information générale</target>
+      </trans-unit>
+      <trans-unit id="BqVxIo." resname="Personal information">
+        <source>Personal information</source>
+        <target>Information personnel</target>
+      </trans-unit>
+      <trans-unit id="qbGiCZR" resname="Qualification &amp; stack">
+        <source>Qualification &amp; stack</source>
+        <target><![CDATA[Qualification & technologies]]></target>
+      </trans-unit>
+      <trans-unit id="69rZukx" resname="Others">
+        <source>Others</source>
+        <target>Autre(s)</target>
+      </trans-unit>
+      <trans-unit id="bfG7GKW" resname="Skill">
+        <source>Skill</source>
+        <target>Compétence(s)</target>
+      </trans-unit>
+      <trans-unit id="NqeY4.O" resname="Training">
+        <source>Training</source>
+        <target>Formation(s)</target>
+      </trans-unit>
+      <trans-unit id="Hcg.YF7" resname="Monitoring">
+        <source>Monitoring</source>
+        <target>Suivi</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

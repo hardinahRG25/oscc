@@ -18,6 +18,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class UserType extends AbstractType
@@ -47,8 +48,21 @@ class UserType extends AbstractType
 				'label' => 'Prénom'
 			])
 			->add('email', EmailType::class)
-			->add('password', PasswordType::class, [
-				'label' => 'Mot de passe'
+			->add('password', RepeatedType::class, [
+				'type' => PasswordType::class,
+				'first_options' => [
+					'attr' => [
+						'class' => 'form-control'
+					],
+					'label' => 'Mot de passe'
+				],
+				'second_options' => [
+					'attr' => [
+						'class' => 'form-control'
+					],
+					'label' => 'Confirmation du mot de passe'
+				],
+				'invalid_message' => 'Les mots de passe ne correspondent pas.'
 			])
 			->add('date_entry', DateType::class, [
 				'label' => 'Date d\'entrée',
@@ -66,8 +80,13 @@ class UserType extends AbstractType
 				'required' => false
 			])
 			->add('qualification')
-			->add('contract_type', TextType::class, [
-				'label' => 'Type de contrat'
+			->add('contract_type', ChoiceType::class, [
+				'label' => 'Type de contrat',
+				"placeholder" => "Choisissez...",
+				'choices' => [
+					'Salarié' => 'SALARIE',
+					'Indépendant' => 'INDEPENDANT'
+				],
 			])
 			->add('manager', EntityType::class, [
 				"label" => "Unit Manager",
@@ -94,8 +113,8 @@ class UserType extends AbstractType
 				'label' => 'Situation matrimoniale',
 				"placeholder" => "Choisissez...",
 				'choices' => [
-					'CELIBATAIRE' => 'CELIBATAIRE',
-					'MARIE(E)' => 'MARIE(E)'
+					'Célibataire' => 'CELIBATAIRE',
+					'Marié(e)' => 'MARIE(E)'
 				],
 			])
 			->add('gender', ChoiceType::class, [

@@ -28,6 +28,7 @@
 							<div class="input-group input-group-dynamic {% if error %}is-invalid{% endif %} mb-3">
 								<label class="form-label" for="password">{% trans %}Password{% endtrans %}</label>
 								<input type="password" class="form-control" id="password" name="_password"/>
+								<span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
 							{% if error %}
 								<div class="alert alert-danger alert-dismissible text-white fade show" data-auto-dismiss="200" role="alert">
@@ -46,9 +47,8 @@
 			</div>
 		</div>
 	</div>
-
-	{% block javascripts %}
-		<script type="text/javascript" src="{{ asset('assets/js/plugins/jquery-3.6.0.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('assets/js/custom/login.js') }}"></script>
-	{% endblock %}
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('assets/js/custom/login.js') }}"></script>
 {% endblock %}

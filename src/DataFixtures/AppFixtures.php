@@ -83,7 +83,7 @@ class AppFixtures extends Fixture
 		$users[] = $admin;
 		$manager->persist($admin);
 
-		for ($i = 0; $i < 27; $i++) {
+		for ($i = 0; $i < mt_rand(4, 21); $i++) {
 			$user = new User();
 			$location_name = $location[mt_rand(0, count($location) - 1)];
 			$user->setEmail($this->faker->email())

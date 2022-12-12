@@ -27,7 +27,7 @@
 				<li class="nav-item">
 					<a class="nav-link text-white indentation-side {% if 'app_user_index' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_user_index') }}">
 						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-							<i class="material-icons opacity-10">engineering</i>
+							<i class="material-icons opacity-10">list</i>
 						</div>
 						<span class="nav-link-text ms-1">{% trans %}List{% endtrans %}</span>
 					</a>
@@ -51,12 +51,12 @@
 				<hr class="horizontal light mt-0 mb-2">
 				<!-- End Collborateur Menu -->
 				<!-- Client Menu-->
-					<li class="nav-item mt-3"> <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">{% trans %}Customer{% endtrans %}</h6>
+					<li class="nav-item mt-3"> <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">{% trans %}Employee{% endtrans %}</h6>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white indentation-side {% if 'app_customer_index' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_customer_index') }}">
 						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-							<i class="material-icons opacity-10">group</i>
+							<i class="material-icons opacity-10">list</i>
 						</div>
 						<span class="nav-link-text ms-1">{% trans %}List{% endtrans %}</span>
 					</a>
@@ -69,9 +69,30 @@
 						<span class="nav-link-text ms-1">{% trans %}New{% endtrans %}</span>
 					</a>
 				</li>
+				<hr class="horizontal light mt-0 mb-2">
+				<!-- End Client Menu-->
+				<!-- mood Menu -->
+					<li class="nav-item mt-3"> <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">{% trans %}Monitoring{% endtrans %}</h6>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white indentation-side {% if 'app_user_new' in app.request.get('_route') %}active bg-gradient-primary{% endif %}" href="{{ path('app_user_new') }}">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">people</i>
+						</div>
+						<span class="nav-link-text ms-1">{% trans %}Employee{% endtrans %}</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white indentation-side" href="#">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">diamond</i>
+						</div>
+						<span class="nav-link-text ms-1">{% trans %}Customer{% endtrans %}</span>
+					</a>
+				</li>
 				<hr
 				class="horizontal light mt-0 mb-2">
-			<!-- End Client Menu-->
+			<!-- End mood Menu -->
 			{% endif %}
 			<!-- Missions Menu -->
 			<li class="nav-item mt-3">

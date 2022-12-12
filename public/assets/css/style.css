@@ -71,3 +71,10 @@ th:first-letter {
     background: #fadeff;
     z-index: 9999;
 }
+
+/* Show and hide password */
+.field-icon {
+    float: right;
+    position: relative;
+    z-index: 2;
+}
