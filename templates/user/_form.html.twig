@@ -18,9 +18,7 @@
 						<span class="material-icons align-middle mb-1">
 							groups
 						</span>
-						{% trans %}
-						Personal information
-						{% endtrans %}
+						{% trans %}Personal information{% endtrans %}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -28,9 +26,7 @@
 						<span class="material-icons align-middle mb-1">
 							laptop
 						</span>
-						{% trans %}
-						Skill
-						{% endtrans %}
+						{% trans %}Skill{% endtrans %}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -120,6 +116,14 @@
 							{{ form_widget(form.password.second, {'attr': {'class':'form-control'}}) }}
 						</div>
 					</div>
+					{% if not form.vars.valid %}
+						<div class="alert alert-danger alert-dismissible text-white fade show" data-auto-dismiss="200" role="alert">
+							<span class="alert-text">{{ form_errors(form.password) }}</span>
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					{% endif %}
 				{% endif %}
 				<div class="col-md-6">
 					<div class="input-group input-group-dynamic is-filled my-3">

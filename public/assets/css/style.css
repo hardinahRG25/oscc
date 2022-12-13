@@ -78,3 +78,12 @@ th:first-letter {
     position: relative;
     z-index: 2;
 }
+
+
+/**
+* image vich profil pic
+*/
+.vich-image img {
+    min-width: 150px;
+    max-width: 250px;
+}

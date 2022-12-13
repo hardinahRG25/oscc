@@ -177,6 +177,114 @@
         <source>Monitoring</source>
         <target>Suivi</target>
       </trans-unit>
+      <trans-unit id="skOby43" resname="Output">
+        <source>Output</source>
+        <target>Sortie</target>
+      </trans-unit>
+      <trans-unit id="H0uzsqY" resname="Profil picture">
+        <source>Profil picture</source>
+        <target>Photo de profile</target>
+      </trans-unit>
+      <trans-unit id="FbYZdLJ" resname="Location">
+        <source>Location</source>
+        <target>Localisation</target>
+      </trans-unit>
+      <trans-unit id="htiPHRy" resname="Lastname">
+        <source>Lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="ZHz6kbI" resname="Firstname">
+        <source>Firstname</source>
+        <target>Prénom(s)</target>
+      </trans-unit>
+      <trans-unit id="wrwpLIB" resname="Password confirm">
+        <source>Password confirm</source>
+        <target>Confirmation mot de passe</target>
+      </trans-unit>
+      <trans-unit id="9pSqqNo" resname="The passwords do not match.">
+        <source>The passwords do not match.</source>
+        <target>Les mots de passes ne se correspondent pas.</target>
+      </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Pays d'origine</target>
+      </trans-unit>
+      <trans-unit id=".DP3Mkb" resname="City">
+        <source>City</source>
+        <target>Ville</target>
+      </trans-unit>
+      <trans-unit id="UPGHjST" resname="District">
+        <source>District</source>
+        <target>Quartier</target>
+      </trans-unit>
+      <trans-unit id=".Sf9ozO" resname="Contract type">
+        <source>Contract type</source>
+        <target>Type de contrat</target>
+      </trans-unit>
+      <trans-unit id="iVulF6m" resname="Choose...">
+        <source>Choose...</source>
+        <target>Choisissez...</target>
+      </trans-unit>
+      <trans-unit id="pnsEzVx" resname="Worker">
+        <source>Worker</source>
+        <target>Salarié</target>
+      </trans-unit>
+      <trans-unit id="2b1tmuR" resname="Independant">
+        <source>Independant</source>
+        <target>Independant</target>
+      </trans-unit>
+      <trans-unit id="y4miW8f" resname="Unit manager">
+        <source>Unit manager</source>
+        <target>Unit manager</target>
+      </trans-unit>
+      <trans-unit id="xhOKv6a" resname="Birthday">
+        <source>Birthday</source>
+        <target>Date d'anniversaire</target>
+      </trans-unit>
+      <trans-unit id="mNDS8fA" resname="Marital status">
+        <source>Marital status</source>
+        <target>Situation matrimonial</target>
+      </trans-unit>
+      <trans-unit id="rOC2z21" resname="Celibataire">
+        <source>Celibataire</source>
+        <target>Celibataire</target>
+      </trans-unit>
+      <trans-unit id="ZOETSX0" resname="Married">
+        <source>Married</source>
+        <target>Marié(e)</target>
+      </trans-unit>
+      <trans-unit id="oEYw74v" resname="Gender">
+        <source>Gender</source>
+        <target>Genre</target>
+      </trans-unit>
+      <trans-unit id="A.jBJz4" resname="Male">
+        <source>Male</source>
+        <target>Masculin</target>
+      </trans-unit>
+      <trans-unit id="6MyoCK5" resname="Female">
+        <source>Female</source>
+        <target>Féminin</target>
+      </trans-unit>
+      <trans-unit id="V_cFxLG" resname="Child number">
+        <source>Child number</source>
+        <target>Nombre d'enfant</target>
+      </trans-unit>
+      <trans-unit id="ClwzNVz" resname="Country location">
+        <source>Country location</source>
+        <target>Pays de localisation</target>
+      </trans-unit>
+      <trans-unit id="PN..9Ga" resname="Adress">
+        <source>Adress</source>
+        <target>Addresse</target>
+      </trans-unit>
+      <trans-unit id="QO9AXSu" resname="Phone principal">
+        <source>Phone principal</source>
+        <target>Télephone principal</target>
+      </trans-unit>
+      <trans-unit id="LshrToU" resname="Phone secondary">
+        <source>Phone secondary</source>
+        <target>Télephone secondaire</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
