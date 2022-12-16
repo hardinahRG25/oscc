@@ -96,6 +96,9 @@ class UserController extends AbstractController
 			->add('contacts', TextColumn::class, [
 				'label' => 'Télephone'
 			])
+			->add('email', TextColumn::class, [
+				'label' => 'Email'
+			])
 			->add('location', TextColumn::class, [
 				'label' => 'Pays de localisation'
 			])
@@ -120,6 +123,7 @@ class UserController extends AbstractController
 							u.birth_date,
 							u.gender,
 							u.date_entry,
+							u.email,
 							u.matrimonial_status,
 							CONCAT(u.matrimonial_status, ', ', u.childNumber) AS family,
 							TIMESTAMPDIFF(MONTH, u.date_entry, CURRENT_TIMESTAMP()) AS monthsCount,

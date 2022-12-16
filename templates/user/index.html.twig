@@ -37,8 +37,7 @@
 	</div>
 
 	{% block javascripts %}
-		<script type="text/javascript" src="{{ asset('assets/datatables/js/datatables.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
+		{{ parent() }}
 		<script type="text/javascript">
 			$(function () {
 $('#collab-list').initDataTables({{ datatable_settings(datatable) }}, {

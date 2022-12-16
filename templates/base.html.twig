@@ -49,6 +49,8 @@
 				<!-- End Footer -->
 			</div>
 		</main>
+
+		<script type="text/javascript" src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
 		{% block javascripts %}
 			<!--   Core JS Files   -->
 			<script type="text/javascript" src="{{ asset('assets/js/plugins/jquery-3.6.0.min.js') }}"></script>
@@ -63,7 +65,8 @@
 			<!-- Github buttons -->
 			<script type="text/javascript" async defer src="{{ asset('assets/js/github-buttons.js') }}"></script>
 			<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-			<script type="text/javascript" src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('assets/datatables/js/datatables.min.js') }}"></script>
+			<script type="text/javascript" src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
 		{% endblock %}
 	</body>
 
