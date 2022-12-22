@@ -101,7 +101,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 25)]
     private ?string $english_level = null;
 
-    #[ORM\Column(length: 25, nullable: true)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $original_company = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -152,11 +152,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 1)]
     private ?string $gender = null;
 
+    #[ORM\ManyToMany(targetEntity: University::class, inversedBy: 'universityUserHome')]
+    private Collection $universityHome;
+
     public function __construct()
     {
         $this->cusUm = new ArrayCollection();
         $this->cusBm = new ArrayCollection();
         $this->managerEmployee = new ArrayCollection();
+        $this->universityHome = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -766,6 +770,30 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGender(string $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, University>
+     */
+    public function getUniversityHome(): Collection
+    {
+        return $this->universityHome;
+    }
+
+    public function addUniversityHome(University $universityHome): self
+    {
+        if (!$this->universityHome->contains($universityHome)) {
+            $this->universityHome->add($universityHome);
+        }
+
+        return $this;
+    }
+
+    public function removeUniversityHome(University $universityHome): self
+    {
+        $this->universityHome->removeElement($universityHome);
 
         return $this;
     }

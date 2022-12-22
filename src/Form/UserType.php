@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\University;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
@@ -134,6 +135,16 @@ class UserType extends AbstractType
 					$this->translator->trans('Female') => 'f'
 				],
 			])
+			->add('universityHome', EntityType::class, [
+				'class' => University::class,
+				'label' => $this->translator->trans('home university'),
+				'label_attr' => [
+					'class' => 'form-label mt-4'
+				],
+				'choice_label' => 'nameUniversity',
+				'multiple' => true,
+				'expanded' => true,
+			])
 			->add('childNumber', IntegerType::class, [
 				'attr' => [
 					'min' => 0,
@@ -191,7 +202,6 @@ class UserType extends AbstractType
 					'DEBUTANT' => 'DEBUTANT',
 					'MOYEN' => 'MOYEN',
 					'AVANCE' => 'AVANCE',
-					'EXCELLENT' => 'EXCELLENT',
 				],
 			])
 			->add('cv_observations', TextareaType::class, [

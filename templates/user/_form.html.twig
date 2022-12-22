@@ -228,6 +228,17 @@
 		<div class="card-body">
 			<div class="row">
 				<div class="col-md-6">
+					<div class="input-group input-group-dynamic my-3 is-filled">
+						{{ form_label(form.universityHome, null, {'label_attr': {'class':'form-label'}}) }}
+						{% for field in form.universityHome %}
+							<div style="min-width: 12%;">
+								{{ form_widget(field) }}
+								{{ form_label(field) }}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="col-md-6">
 					<div class="input-group input-group-dynamic is-filled my-3">
 						{{ form_label(form.tech_dominant_cv, null, {'label_attr': {'class':'form-label'}}) }}
 						{{ form_widget(form.tech_dominant_cv, {'attr': {'class':'form-control'}}) }}

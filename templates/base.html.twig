@@ -22,36 +22,41 @@
 		href="{{ asset('assets/css/material-icon.css') }}" rel="stylesheet">
 		<!-- CSS Files -->
 		<link id="pagestyle" href="{{ asset('assets/css/material-dashboard.css') }}" rel="stylesheet"/>
+		<link id="customstyle" href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
 		<link
-		id="customstyle" href="{{ asset('assets/css/style.css') }}" rel="stylesheet"/>
+		href="{{ asset('assets/css/sidebar.css') }}" rel="stylesheet"/>
 		<!-- Datatables -->
 		<link rel="stylesheet" type="text/css" href="{{ asset('assets/datatables/css/datatables.min.css') }}"/>
 		<link rel="stylesheet" href="{{ asset('assets/datatables/css/jquery.datatables.min.css') }}">
 	</head>
 
-	<body
-		class="g-sidenav-show bg-gray-200">
-		<!-- Left Sidebar -->
-		{% if app.user %}
-			{% include 'sidebar.html.twig' %}
-		{% endif %}
-		<!-- End Left Sidebar -->
-		<main
-			class="main-content position-relative max-height-vh-100 h-100 border-radius-lg">
-			<!-- Navbar -->
+	<body class="g-sidenav-show bg-gray-200">
+		<div class="page-wrapper chiller-theme toggled">
+			<a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+				<i class="fas fa-bars"></i>
+			</a>
+			<!-- Left Sidebar -->
 			{% if app.user %}
-				{% include 'navbar.html.twig' %}
+				{% include 'partial/sidebar.html.twig' %}
 			{% endif %}
-			<!-- End Navbar -->
-			<div class="{% if app.user %}container-fluid py-4{% else %}page-header align-items-start min-vh-100{% endif %}" {% if not app.user %} style="background-image: url('{{ asset('assets/img/wallper.png') }}');" {% endif %}> {% block body %}{% endblock %}
-				<!-- Footer -->
-				{% include 'footer.html.twig' %}
-				<!-- End Footer -->
-			</div>
-		</main>
+			<!-- End Left Sidebar -->
+			<main class="page-content" {% if not app.user %} style="padding: 0px!important; margin: 0px!important; overflow: unset;" {% endif %}>
+				<div
+					class="container-fluid" {% if not app.user %} style="padding: 0px!important;" {% endif %}>
+					<!-- Navbar -->
+					{% if app.user %}
+						{% include 'partial/navbar.html.twig' %}
+					{% endif %}
+					<!-- End Navbar -->
+					<div class="{% if app.user %}container-fluid py-4{% else %}page-header align-items-start min-vh-100{% endif %}" {% if not app.user %} style="background-image: url('{{ asset('assets/img/wallper.png') }}');" {% endif %}> {% block body %}{% endblock %}
+						<!-- Footer -->
+						{% include 'partial/footer.html.twig' %}
+						<!-- End Footer -->
+					</div>
+				</div>
+			</main>
 
-		<script type="text/javascript" src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
-		{% block javascripts %}
+			<script type="text/javascript" src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
 			<!--   Core JS Files   -->
 			<script type="text/javascript" src="{{ asset('assets/js/plugins/jquery-3.6.0.min.js') }}"></script>
 			<script type="text/javascript" src="{{ asset('assets/js/core/bootstrap.bundle.min.js') }}"></script>
@@ -67,7 +72,7 @@
 			<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
 			<script type="text/javascript" src="{{ asset('assets/datatables/js/datatables.min.js') }}"></script>
 			<script type="text/javascript" src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
-		{% endblock %}
+			{% block javascripts %}{% endblock %}
+		</div>
 	</body>
-
-</html>
+</html></body></html>

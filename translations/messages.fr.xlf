@@ -167,7 +167,7 @@
       </trans-unit>
       <trans-unit id="bfG7GKW" resname="Skill">
         <source>Skill</source>
-        <target>Compétence(s)</target>
+        <target>Compétences</target>
       </trans-unit>
       <trans-unit id="NqeY4.O" resname="Training">
         <source>Training</source>
@@ -284,6 +284,14 @@
       <trans-unit id="LshrToU" resname="Phone secondary">
         <source>Phone secondary</source>
         <target>Télephone secondaire</target>
+      </trans-unit>
+      <trans-unit id="J50jOz7" resname="Change location">
+        <source>Change location</source>
+        <target>Changement localisationn</target>
+      </trans-unit>
+      <trans-unit id="YKU0nx." resname="home university">
+        <source>home university</source>
+        <target>Université d’origine</target>
       </trans-unit>
     </body>
   </file>
