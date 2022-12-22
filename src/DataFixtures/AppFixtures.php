@@ -8,6 +8,7 @@ use Cassandra\Date;
 use App\Entity\User;
 use Faker\Generator;
 use App\Entity\Customer;
+use App\Entity\University;
 use App\Entity\TypeActivity;
 use App\Entity\BusinessSector;
 use App\Entity\StackTechLanguage;
@@ -54,8 +55,8 @@ class AppFixtures extends Fixture
 		$admin->setEmail('admin@novity.io')
 			->setRoles(['ROLE_ADMIN'])
 			->setPassword('admin123456')
-			->setLastname('admin')
-			->setFirstname('admin')
+			->setLastname('Admin')
+			->setFirstname('Novity')
 			->setDateEntry(new DateTime('2022-09-01'))
 			->setCountry('Madagascar')
 			->setQualification('qualification 1')
@@ -83,7 +84,7 @@ class AppFixtures extends Fixture
 		$users[] = $admin;
 		$manager->persist($admin);
 
-		for ($i = 0; $i < 27; $i++) {
+		for ($i = 0; $i < mt_rand(4, 21); $i++) {
 			$user = new User();
 			$location_name = $location[mt_rand(0, count($location) - 1)];
 			$user->setEmail($this->faker->email())
@@ -140,6 +141,13 @@ class AppFixtures extends Fixture
 			$manager->persist($stackTech);
 		}
 
+		//university
+		$universityArray = ['ISSIG', 'ISPM', 'IT', 'AKATSO', 'IST', 'Hors Mada'];
+		for ($i = 0; $i < count($universityArray); $i++) {
+			$university = new University();
+			$university->setNameUniversity($universityArray[$i]);
+			$manager->persist($university);
+		}
 		//Save
 
 		$manager->flush();

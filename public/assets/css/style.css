@@ -71,3 +71,29 @@ th:first-letter {
     background: #fadeff;
     z-index: 9999;
 }
+
+/* Show and hide password */
+.field-icon {
+    float: right;
+    position: relative;
+    z-index: 2;
+}
+
+
+/**
+* image vich profil pic
+*/
+.vich-image img {
+    min-width: 150px;
+    max-width: 250px;
+}
+
+/**
+* oscc image
+*/
+.oscc {
+    max-width: 33px;
+    margin-bottom: 2%;
+    margin-right: 14%;
+    border-radius: 50%;
+}

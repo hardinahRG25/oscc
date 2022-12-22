@@ -56,3 +56,6 @@
 
 # local or dev settings
 /.env.local
+
+# image 
+/public/storage

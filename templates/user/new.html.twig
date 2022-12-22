@@ -1,13 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau collaborateur{% endblock %}
+{% block title %}Nouveau collaborateur
+{% endblock %}
 
 {% block body %}
-    <h3>Nouveau collaborateur</h3>
-    <br>
+	<h3>Nouveau collaborateur</h3>
+	<br>
 
-    {{ include('user/_form.html.twig') }}
+	{{ include('user/_form.html.twig') }}
 
-    <a href="{{ path('app_user_index') }}">
-        <i class="material-icons text-sm me-2">arrow_back</i>Liste</a>
+	<a href="{{ path('app_user_index') }}">
+		<i class="material-icons text-sm me-2">arrow_back</i>Liste</a>
 {% endblock %}

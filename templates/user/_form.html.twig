@@ -8,7 +8,9 @@
 						<span class="material-icons align-middle mb-1">
 							badge
 						</span>
-						Informations basiques
+						{% trans %}
+						Basic information
+						{% endtrans %}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -16,7 +18,7 @@
 						<span class="material-icons align-middle mb-1">
 							groups
 						</span>
-						Informations personnelles
+						{% trans %}Personal information{% endtrans %}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -24,7 +26,7 @@
 						<span class="material-icons align-middle mb-1">
 							laptop
 						</span>
-						Qualifications et technos
+						{% trans %}Skill{% endtrans %}
 					</a>
 				</li>
 				<li class="nav-item">
@@ -32,9 +34,33 @@
 						<span class="material-icons align-middle mb-1">
 							inventory
 						</span>
-						Autres
+						{% trans %}
+						Others
+						{% endtrans %}
 					</a>
 				</li>
+				{% if user.id %}
+					<li class="nav-item">
+						<a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#info-perso" role="tab" aria-controls="code" aria-selected="false">
+							<span class="material-icons align-middle mb-1">
+								rocket_launch
+							</span>
+							{% trans %}
+							Mission
+							{% endtrans %}
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link mb-0 px-0 py-1" data-bs-toggle="tab" href="#info-perso" role="tab" aria-controls="code" aria-selected="false">
+							<span class="material-icons align-middle mb-1">
+								model_training
+							</span>
+							{% trans %}
+							Training
+							{% endtrans %}
+						</a>
+					</li>
+				{% endif %}
 			</ul>
 		</div>
 	</div>
@@ -71,19 +97,33 @@
 						{{ form_widget(form.gender, {'attr': {'class':'form-control'}}) }}
 					</div>
 				</div>
-				<div class="col-md-6">
+				<div class="col-md-12">
 					<div class="input-group input-group-dynamic is-filled my-3">
 						{{ form_label(form.email, null, {'label_attr': {'class':'form-label'}}) }}
 						{{ form_widget(form.email, {'attr': {'class':'form-control'}}) }}
 					</div>
 				</div>
 				{% if not user.id %}
-					<div class="col-md-6">
+					<div class="col-md-12">
 						<div class="input-group input-group-dynamic is-filled my-3">
-							{{ form_label(form.password, null, {'label_attr': {'class':'form-label'}}) }}
-							{{ form_widget(form.password, {'attr': {'class':'form-control'}}) }}
+							{{ form_label(form.password.first, null, {'label_attr': {'class':'form-label'}}) }}
+							{{ form_widget(form.password.first, {'attr': {'class':'form-control'}}) }}
 						</div>
 					</div>
+					<div class="col-md-12">
+						<div class="input-group input-group-dynamic is-filled my-3">
+							{{ form_label(form.password.second, null, {'label_attr': {'class':'form-label'}}) }}
+							{{ form_widget(form.password.second, {'attr': {'class':'form-control'}}) }}
+						</div>
+					</div>
+					{% if not form.vars.valid %}
+						<div class="alert alert-danger alert-dismissible text-white fade show" data-auto-dismiss="200" role="alert">
+							<span class="alert-text">{{ form_errors(form.password) }}</span>
+							<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					{% endif %}
 				{% endif %}
 				<div class="col-md-6">
 					<div class="input-group input-group-dynamic is-filled my-3">
@@ -187,6 +227,17 @@
 	<div class="card tab-pane fade" id="qualification" role="tabpanel" aria-labelledby="qualification-tab">
 		<div class="card-body">
 			<div class="row">
+				<div class="col-md-6">
+					<div class="input-group input-group-dynamic my-3 is-filled">
+						{{ form_label(form.universityHome, null, {'label_attr': {'class':'form-label'}}) }}
+						{% for field in form.universityHome %}
+							<div style="min-width: 12%;">
+								{{ form_widget(field) }}
+								{{ form_label(field) }}
+							</div>
+						{% endfor %}
+					</div>
+				</div>
 				<div class="col-md-6">
 					<div class="input-group input-group-dynamic is-filled my-3">
 						{{ form_label(form.tech_dominant_cv, null, {'label_attr': {'class':'form-label'}}) }}

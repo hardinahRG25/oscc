@@ -24,6 +24,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 #[Route('/client')]
 class CustomerController extends AbstractController
 {
+
+    /**
+     * Undocumented function
+     *
+     * @param CustomerRepository $customerRepository
+     * @param Request $request
+     * @param DataTableFactory $dataTableFactory
+     * @return Response
+     */
     #[Route('/', name: 'app_customer_index', methods: ['POST', 'GET'])]
     public function index(CustomerRepository $customerRepository, Request $request, DataTableFactory $dataTableFactory): Response
     {
@@ -108,6 +117,13 @@ class CustomerController extends AbstractController
         );
     }
 
+    /**
+     * Undocumented function
+     *
+     * @param Request $request
+     * @param CustomerRepository $customerRepository
+     * @return Response
+     */
     #[Route('/nouveau', name: 'app_customer_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CustomerRepository $customerRepository): Response
     {
@@ -127,6 +143,9 @@ class CustomerController extends AbstractController
         ]);
     }
 
+    /**
+     * 
+     */
     #[Route('/{id}', name: 'app_customer_show', methods: ['GET'])]
     public function show(Customer $customer): Response
     {
@@ -135,6 +154,9 @@ class CustomerController extends AbstractController
         ]);
     }
 
+    /**
+     * 
+     */
     #[Route('/{id}/edit', name: 'app_customer_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Customer $customer, CustomerRepository $customerRepository): Response
     {

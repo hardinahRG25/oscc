@@ -24,10 +24,26 @@ use Omines\DataTablesBundle\Adapter\Doctrine\ORM\SearchCriteriaProvider;
 #[Route('/collaborateur')]
 class UserController extends AbstractController
 {
+	/**
+	 * Constructor
+	 *
+	 * @param Conversion $conversion
+	 */
 	public function __construct(Conversion $conversion)
 	{
 		$this->convert = $conversion;
 	}
+
+	/**
+	 * Index page
+	 *
+	 * @param UserRepository $userRepository
+	 * @param Request $request
+	 * @param DataTableFactory $dataTableFactory
+	 * @return Response array list
+	 */
+
+
 	#[Route('/', name: 'app_user_index', methods: ['POST', 'GET'])]
 	public function index(UserRepository $userRepository, Request $request, DataTableFactory $dataTableFactory): Response
 	{
@@ -80,6 +96,9 @@ class UserController extends AbstractController
 			->add('contacts', TextColumn::class, [
 				'label' => 'Télephone'
 			])
+			->add('email', TextColumn::class, [
+				'label' => 'Email'
+			])
 			->add('location', TextColumn::class, [
 				'label' => 'Pays de localisation'
 			])
@@ -104,6 +123,7 @@ class UserController extends AbstractController
 							u.birth_date,
 							u.gender,
 							u.date_entry,
+							u.email,
 							u.matrimonial_status,
 							CONCAT(u.matrimonial_status, ', ', u.childNumber) AS family,
 							TIMESTAMPDIFF(MONTH, u.date_entry, CURRENT_TIMESTAMP()) AS monthsCount,
@@ -127,6 +147,13 @@ class UserController extends AbstractController
 		);
 	}
 
+	/**
+	 * add new
+	 *
+	 * @param Request $request
+	 * @param UserRepository $userRepository
+	 * @return Response
+	 */
 	#[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
 	public function new(Request $request, UserRepository $userRepository): Response
 	{
@@ -146,6 +173,9 @@ class UserController extends AbstractController
 		]);
 	}
 
+	/**
+	 * 
+	 */
 	#[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
 	public function show(User $user): Response
 	{
@@ -153,7 +183,9 @@ class UserController extends AbstractController
 			'user' => $user,
 		]);
 	}
-
+	/**
+	 * 
+	 */
 	#[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
 	public function edit(Request $request, User $user, UserRepository $userRepository): Response
 	{
@@ -173,6 +205,9 @@ class UserController extends AbstractController
 		]);
 	}
 
+	/**
+	 * 
+	 */
 	#[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
 	public function delete(Request $request, User $user, UserRepository $userRepository): Response
 	{
