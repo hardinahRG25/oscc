@@ -17,9 +17,13 @@
 							</div>
 							{% if 'ROLE_ADMIN' in app.user.roles %}
 								<div class="col-2">
-									<a class="btn bg-gradient-light mb-0" href="{{ path('app_user_new') }}">
-										<i class="material-icons text-sm">add</i>
-										&nbsp;&nbsp;Nouveau
+									<a href="{{ path('app_user_new') }}">
+										<button class="btn btn-outline-primary" type="button">
+											<span class="btn-inner--icon">
+												<i class="material-icons">add</i>
+											</span>
+											<span class="btn-inner--text">{% trans %}New{% endtrans %}</span>
+										</button>
 									</a>
 								</div>
 							{% endif %}
@@ -36,10 +40,14 @@
 		</div>
 	</div>
 
+
 	{% block javascripts %}
 		{{ parent() }}
-		<script type="text/javascript">
-			$(function () {
+	{% endblock %}
+
+
+	<script type="text/javascript">
+		$(function () {
 $('#collab-list').initDataTables({{ datatable_settings(datatable) }}, {
 searching: true,
 fixedHeader: true,
@@ -61,8 +69,6 @@ language: {
 }
 });
 });
-		</script>
-
-	{% endblock %}
+	</script>
 	<script type="text/javascript" src="{{ asset('assets/js/custom/hideShowColumn.js') }}"></script>
 {% endblock %}

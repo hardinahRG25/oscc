@@ -4,6 +4,35 @@
 {% endblock %}
 
 {% block body %}
+	<div
+		class="flash-messages">
+		{# {% for message in app.session.flashbag.get('success') %} #}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+			<span class="alert-text">t</span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-danger alert-dismissible fade show" role="alert">
+			<span class="alert-text">t</span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-warning alert-dismissible fade show" role="alert">
+			<span class="alert-text">t</span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="alert alert-info alert-dismissible fade show" role="alert">
+			<span class="alert-text">t</span>
+			<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		{# {% endfor %} #}
+	</div>
 	<div class="row">
 		<div class="col-12">
 			<div class="card my-4">

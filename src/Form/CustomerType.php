@@ -29,7 +29,7 @@ class CustomerType extends AbstractType
             ->add('name_company', TextType::class, [
                 'attr' => [
                     'minlength' => '2',
-                    'maxlength' => '50',
+                    'maxlength' => '250',
                 ],
                 'label' => 'Nom du client',
                 'constraints' => [
@@ -40,7 +40,7 @@ class CustomerType extends AbstractType
             ->add('size_company', TextType::class, [
                 'attr' => [
                     'minlength' => '1',
-                    'maxlength' => '50'
+                    'maxlength' => '250'
                 ],
                 'label' => 'Taille',
                 'constraints' => [
@@ -51,7 +51,7 @@ class CustomerType extends AbstractType
             ->add('location', TextType::class, [
                 'attr' => [
                     'minlength' => '2',
-                    'maxlength' => '50'
+                    'maxlength' => '250'
                 ],
                 'label' => 'Localisation',
                 'constraints' => [
@@ -65,7 +65,7 @@ class CustomerType extends AbstractType
                 ],
                 'label' => 'Structure de l\'equipe',
                 'constraints' => [
-                    new Assert\Length(['min' => 2, 'max' => 50]),
+                    new Assert\Length(['min' => 2, 'max' => 550]),
                     new Assert\NotBlank()
                 ]
             ])
@@ -90,7 +90,7 @@ class CustomerType extends AbstractType
             ->add('work_time', TextType::class, [
                 'attr' => [
                     'minlength' => '2',
-                    'maxlength' => '50'
+                    'maxlength' => '250'
                 ],
                 'label' => 'Horaire',
                 'required' => false,
@@ -114,7 +114,7 @@ class CustomerType extends AbstractType
             ->add('pc_specification', TextType::class, [
                 'attr' => [
                     'minlength' => '2',
-                    'maxlength' => '50'
+                    'maxlength' => '250'
                 ],
                 'label' => 'Spécifications techniques PC',
                 'constraints' => [
@@ -125,7 +125,7 @@ class CustomerType extends AbstractType
             ->add('contacts', TextType::class, [
                 'attr' => [
                     'minlength' => '2',
-                    'maxlength' => '50'
+                    'maxlength' => '250'
                 ],
                 'label' => 'Contact(s)',
                 'constraints' => [

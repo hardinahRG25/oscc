@@ -33,7 +33,7 @@ class CustomerController extends AbstractController
      * @param DataTableFactory $dataTableFactory
      * @return Response
      */
-    #[Route('/', name: 'app_customer_index', methods: ['POST', 'GET'])]
+    #[Route('/list', name: 'app_customer_index', methods: ['POST', 'GET'])]
     public function index(CustomerRepository $customerRepository, Request $request, DataTableFactory $dataTableFactory): Response
     {
         $table = $dataTableFactory->create()
@@ -133,6 +133,8 @@ class CustomerController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $customerRepository->add($customer, true);
+
+            $this->addFlash('success', 'Données ajoutées avec succès !');
 
             return $this->redirectToRoute('app_customer_index', [], Response::HTTP_SEE_OTHER);
         }

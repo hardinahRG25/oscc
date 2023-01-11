@@ -64,12 +64,14 @@ th:first-letter {
 
 #tableEditor {
     position: absolute;
-    left: 45px;
-    top: 90px;
+    left: 300px;
+    top: 230px;
     padding: 5px;
     border: 1px solid #000;
-    background: #fadeff;
+    background: #384db0eb;
     z-index: 9999;
+    border-radius: 20px;
+    color: #FFF;
 }
 
 /* Show and hide password */
@@ -92,8 +94,49 @@ th:first-letter {
 * oscc image
 */
 .oscc {
-    max-width: 33px;
-    margin-bottom: 2%;
-    margin-right: 14%;
+    max-width: 37px;
     border-radius: 50%;
+    margin: 10px !important;
+}
+
+/**
+* active bg
+*/
+.sidebar .nano-content>ul>li>ul>li.active>a,
+.sidebar .nano-content>ul>li>ul>li.open>a,
+.sidebar .nano-content>ul>li>ul>li>ul {
+    background: linear-gradient(to right, #373842, #384fbd) !important;
+}
+
+
+/**
+* profilRight header
+*/
+.profilRight {
+    float: right !important;
+    margin-top: -38px;
+    margin-right: 40px;
+}
+
+.bg-gradient-primary {
+    background-image: linear-gradient(195deg, #bfac4e9e 10%, #54d1d7 81%) !important;
+}
+
+
+.footer>p {
+    text-align: center !important;
+}
+
+
+.alert-success {
+    background-image: linear-gradient(195deg, #b1dfb3 0%, #7fcd82 100%) !important;
+}
+
+.alert-danger,
+.alert-info,
+.alert-warning,
+.alert-success {
+    margin-top: 1.5rem !important;
+    color: #FFF !important;
+    font-weight: bold !important;
 }

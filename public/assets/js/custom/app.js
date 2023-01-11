@@ -47,5 +47,12 @@ $(function () {
     function activeMenu() {
     }
 
+    /**
+     * 
+     */
+    setTimeout(function () {
+        $('.alert').alert('close');
+    }, 1065000);
+
 })
 

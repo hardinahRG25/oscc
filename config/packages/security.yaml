@@ -46,6 +46,7 @@ security:
          - { path: ^/collaborateur, roles: ROLE_ADMIN }
          - { path: ^/suivi, roles: ROLE_ADMIN }
          - { path: ^/formation, roles: ROLE_USER }
+         - { path: ^/dashboard, roles: ROLE_USER }
 
 when@test:
     security:

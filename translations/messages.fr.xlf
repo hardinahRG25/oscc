@@ -287,11 +287,67 @@
       </trans-unit>
       <trans-unit id="J50jOz7" resname="Change location">
         <source>Change location</source>
-        <target>Changement localisationn</target>
+        <target>Changement localisation</target>
       </trans-unit>
       <trans-unit id="YKU0nx." resname="home university">
         <source>home university</source>
         <target>Université d’origine</target>
+      </trans-unit>
+      <trans-unit id="yRDUdNz" resname="General">
+        <source>General</source>
+        <target>Générale</target>
+      </trans-unit>
+      <trans-unit id="16jERga" resname="See all">
+        <source>See all</source>
+        <target>Tout voir</target>
+      </trans-unit>
+      <trans-unit id="rWF6D91" resname="Job">
+        <source>Job</source>
+        <target>Poste</target>
+      </trans-unit>
+      <trans-unit id="zoEzKog" resname="Technos">
+        <source>Technos</source>
+        <target>Technos</target>
+      </trans-unit>
+      <trans-unit id="gWlpMQG" resname="Start date">
+        <source>Start date</source>
+        <target>Date de début</target>
+      </trans-unit>
+      <trans-unit id="FDA6oMS" resname="End date">
+        <source>End date</source>
+        <target>Date de fin</target>
+      </trans-unit>
+      <trans-unit id="T8UqPEx" resname="Duration">
+        <source>Duration</source>
+        <target>Durée</target>
+      </trans-unit>
+      <trans-unit id="kg5BPH1" resname="Status">
+        <source>Status</source>
+        <target>Etat</target>
+      </trans-unit>
+      <trans-unit id="AmXOyYz" resname="Reason mission end">
+        <source>Reason mission end</source>
+        <target>Motif de la fin de mission</target>
+      </trans-unit>
+      <trans-unit id="zMSYt3r" resname="Account Manager">
+        <source>Account Manager</source>
+        <target>Account Manager</target>
+      </trans-unit>
+      <trans-unit id="Cm9R6Im" resname="Project Manager">
+        <source>Project Manager</source>
+        <target>Project Manager</target>
+      </trans-unit>
+      <trans-unit id="6Qqiokn" resname="Training name">
+        <source>Training name</source>
+        <target>Intitulé de la formation</target>
+      </trans-unit>
+      <trans-unit id="8ZPQfDd" resname="Progression">
+        <source>Progression</source>
+        <target>Progression</target>
+      </trans-unit>
+      <trans-unit id="o7UMR2c" resname="State">
+        <source>State</source>
+        <target>Etat</target>
       </trans-unit>
     </body>
   </file>
