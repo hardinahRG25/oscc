@@ -1,7 +1,7 @@
 <nav id="sidebar" class="sidebar-wrapper">
 	<div class="sidebar-content">
 		<div class="sidebar-brand">
-			<a href="#"><img class="oscc" src="{{ asset('assets/img/oscc.png') }}" alt="oscc">{% trans %}Employee and Customer Tracking Tool{% endtrans %}</a>
+			<a href="#"><img class="oscc" src="{{ asset('assets/img/oscc.png') }}" alt="oscc"></a>
 			<div id="close-sidebar">
 				<i class="fas fa-times"></i>
 			</div>
@@ -9,8 +9,8 @@
 		<div
 			class="sidebar-header">
 			{# <div class="user-pic">
-																																																																																																																																																										<img class="img-responsive img-rounded" src="{{ asset('storage/img/material-dashboard.min.js') }}" alt="profil_pic">
-																																																																																																																																																									</div> #}
+																																																																																																																																																																												<img class="img-responsive img-rounded" src="{{ asset('storage/img/material-dashboard.min.js') }}" alt="profil_pic">
+																																																																																																																																																																											</div> #}
 			<div class="user-info">
 				<span class="user-name">{{ app.user.firstname }}
 					<strong>{{ app.user.lastname }}</strong>
@@ -54,7 +54,7 @@
 							<li><a class="childmenu"href="{{ path('app_user_new') }}">{% trans %}New{% endtrans %}</a></li>
 							<li><a class="childmenu"href="{{path('app_user_index')}}">{% trans %}List{% endtrans %}</a></li>
 							<li><a href="#">{% trans %}Output{% endtrans %}&nbsp;Novity</a></li>
-							<li><a href="#">{% trans %}Change location{% endtrans %}</a></li>
+							<li><a href="#">{% trans %}Location{% endtrans %}</a></li>
 							<li><a href="#">{% trans %}Skill{% endtrans %}</a></li>
 						</ul>
 					</div>

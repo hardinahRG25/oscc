@@ -8,6 +8,7 @@ use App\Service\Conversion;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\AbstractQuery;
 use App\Repository\UserRepository;
+use App\Repository\MissionRepository;
 use Omines\DataTablesBundle\DataTableState;
 use Omines\DataTablesBundle\DataTableFactory;
 use Symfony\Component\HttpFoundation\Request;
@@ -29,6 +30,10 @@ class UserController extends AbstractController
 	 *
 	 * @param Conversion $conversion
 	 */
+
+	private $convert;
+	private $statusClassColor;
+
 	public function __construct(Conversion $conversion)
 	{
 		$this->convert = $conversion;
@@ -44,7 +49,7 @@ class UserController extends AbstractController
 	 */
 
 
-	#[Route('/', name: 'app_user_index', methods: ['POST', 'GET'])]
+	#[Route('/list', name: 'app_user_list', methods: ['POST', 'GET'])]
 	public function index(UserRepository $userRepository, Request $request, DataTableFactory $dataTableFactory): Response
 	{
 		$table = $dataTableFactory->create()
@@ -164,12 +169,13 @@ class UserController extends AbstractController
 		if ($form->isSubmitted() && $form->isValid()) {
 			$userRepository->add($user, true);
 
-			return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+			return $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
 		}
 
 		return $this->renderForm('user/new.html.twig', [
 			'user' => $user,
 			'form' => $form,
+			'missions' => []
 		]);
 	}
 
@@ -183,12 +189,29 @@ class UserController extends AbstractController
 			'user' => $user,
 		]);
 	}
+
 	/**
-	 * 
+	 * edit user
+	 * @param Request $request
+	 * @param UserRepository $userRepository
+	 * @return Response
 	 */
 	#[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-	public function edit(Request $request, User $user, UserRepository $userRepository): Response
+	public function edit(Request $request, User $user, UserRepository $userRepository, MissionRepository $missionRepository): Response
 	{
+		$list_mission_user = $missionRepository->findBy(
+			[
+				'employee' => intval($request->get('id'))
+			],
+			[
+				'date_start' => 'ASC'
+			]
+		);
+
+		foreach ($list_mission_user as $key => $value) {
+			$list_mission_user[$key]->getDuration();
+		}
+
 		$form = $this->createForm(UserType::class, $user);
 		$form->remove('password');
 		$form->handleRequest($request);
@@ -196,12 +219,13 @@ class UserController extends AbstractController
 		if ($form->isSubmitted() && $form->isValid()) {
 			$userRepository->add($user, true);
 
-			return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+			return $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
 		}
 
 		return $this->renderForm('user/edit.html.twig', [
 			'user' => $user,
 			'form' => $form,
+			'missions' => $list_mission_user
 		]);
 	}
 
@@ -215,6 +239,6 @@ class UserController extends AbstractController
 			$userRepository->remove($user, true);
 		}
 
-		return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+		return $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
 	}
 }

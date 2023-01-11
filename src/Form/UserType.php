@@ -47,14 +47,14 @@ class UserType extends AbstractType
 					'minlength' => '2',
 					'maxlength' => '150',
 				],
-				'label' => $this->translator->trans('Lastname')
+				'label' => $this->translator->trans('Firstname')
 			])
 			->add('lastname', TextType::class, [
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '150',
 				],
-				'label' => $this->translator->trans('Firstname')
+				'label' => $this->translator->trans('Lastname')
 			])
 			->add('email', EmailType::class)
 			->add('password', RepeatedType::class, [

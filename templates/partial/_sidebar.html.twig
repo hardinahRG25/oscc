@@ -1,0 +1,84 @@
+<div class="sidebar sidebar-hide-to-small sidebar-shrink sidebar-gestures">
+	<div class="nano">
+		<div class="nano-content">
+			<div class="logo">
+				<a href="/"><img class="oscc" src="{{ asset('assets/img/oscc.png') }}" alt="oscc"/>
+					<span>{% trans %}Employee and Customer Tracking Tool{% endtrans %}</span>
+				</a>
+			</div>
+			<ul>
+				<hr>
+				<li class="label">{% trans %}General{% endtrans %}</li>
+				<hr>
+				<li>
+					<a href="{{ path('app_dashboard') }}">
+						<i class="fa fa-home"></i>
+						{% trans %}Dashboard{% endtrans %}
+					</a>
+				</li>
+				<li>
+					<a class="sidebar-sub-toggle">
+						<i class="fa fa-group"></i>
+						{% trans %}Employee{% endtrans %}
+						<span class="sidebar-collapse-icon ti-angle-down"></span>
+					</a>
+					<ul>
+						<li><a class="noclass"href="{{path('app_user_new')}}"><i class="fa fa-plus"></i>{% trans %}New{% endtrans %}</a></li>
+						<li><a class="noclass"href="{{path('app_user_list')}}"><i class="fa fa-list"></i>{% trans %}List{% endtrans %}</a></li>
+						<li><a class="noclass" href="#"><i class="fa fa-plane"></i>{% trans %}Output{% endtrans %}&nbsp;Novity</a></li>
+						<li><a class="noclass" href="#"><i class="fa fa-map-marker"></i>{% trans %}Location{% endtrans %}</a></li>
+						<li><a class="noclass" href="#"><i class="fa fa-diamond"></i>{% trans %}Skill{% endtrans %}</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="sidebar-sub-toggle">
+						<i class="fa fa-shopping-cart"></i>
+						{% trans %}Customer{% endtrans %}
+						<span class="sidebar-collapse-icon ti-angle-down"></span>
+					</a>
+					<ul>
+						<li><a class="noclass"href="{{path('app_customer_new')}}"><i class="fa fa-plus"></i>{% trans %}New{% endtrans %}</a></li>
+						<li><a class="noclass"href="{{path('app_customer_index')}}"><i class="fa fa-list"></i>{% trans %}List{% endtrans %}</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="sidebar-sub-toggle">
+						<i class="fa fa-globe"></i>
+						{% trans %}Mission{% endtrans %}
+						<span class="sidebar-collapse-icon ti-angle-down"></span>
+					</a>
+					<ul>
+						<li><a class="noclass"href="{{path('app_mission_new')}}"><i class="fa fa-plus"></i>{% trans %}New{% endtrans %}</a></li>
+						<li><a class="noclass"href="{{path('app_mission_index')}}"><i class="fa fa-list"></i>{% trans %}List{% endtrans %}</a></li>
+					</ul>
+				</li>
+				<li>
+					<a class="sidebar-sub-toggle">
+						<i class="fa fa-chart-line"></i>
+						{% trans %}Monitoring{% endtrans %}
+						<span class="sidebar-collapse-icon ti-angle-down"></span>
+					</a>
+					<ul>
+						<li><a class="noclass" href="#"><i class="fa fa-group"></i>{% trans %}Employee{% endtrans %}</a></li>
+						<li><a class="noclass" href="#"><i class="fa fa-shopping-cart"></i>{% trans %}Customer{% endtrans %}</a></li>
+					</ul>
+				</li>
+				<hr>
+				<li class="label">{% trans %}My account{% endtrans %}</li>
+				<hr>
+				<li>
+					<a href="{{ path('app_logout') }}">
+						<i class="fa fa-user"></i>
+						{% trans %}Profil{% endtrans %}
+					</a>
+				</li>
+				<li>
+					<a href="{{ path('app_logout') }}">
+						<i class="fa fa-sign-out"></i>
+						{% trans %}log out{% endtrans %}
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

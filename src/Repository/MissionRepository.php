@@ -11,7 +11,8 @@ use Doctrine\Persistence\ManagerRegistry;
  *
  * @method Mission|null find($id, $lockMode = null, $lockVersion = null)
  * @method Mission|null findOneBy(array $criteria, array $orderBy = null)
- * @method Mission[]    findAll()
+ * @method Mission[]    fin
+ * dAll()
  * @method Mission[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class MissionRepository extends ServiceEntityRepository
@@ -39,28 +40,36 @@ class MissionRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Mission[] Returns an array of Mission objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('m.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    // public function findMissionManager(int $employee = null): array
+    // {
+    //     $qb = $this->createQueryBuilder('m');
+    //     $select = "m,c,u";
+    //     $query = $qb->select($select)
+    //     ->
+    // }
 
-//    public function findOneBySomeField($value): ?Mission
-//    {
-//        return $this->createQueryBuilder('m')
-//            ->andWhere('m.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    //    /**
+    //     * @return Mission[] Returns an array of Mission objects
+    //     */
+    //    public function findByExampleField($value): array
+    //    {
+    //        return $this->createQueryBuilder('m')
+    //            ->andWhere('m.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->orderBy('m.id', 'ASC')
+    //            ->setMaxResults(10)
+    //            ->getQuery()
+    //            ->getResult()
+    //        ;
+    //    }
+
+    //    public function findOneBySomeField($value): ?Mission
+    //    {
+    //        return $this->createQueryBuilder('m')
+    //            ->andWhere('m.exampleField = :val')
+    //            ->setParameter('val', $value)
+    //            ->getQuery()
+    //            ->getOneOrNullResult()
+    //        ;
+    //    }
 }
