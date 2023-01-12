@@ -204,7 +204,7 @@ class UserController extends AbstractController
 				'employee' => intval($request->get('id'))
 			],
 			[
-				'date_start' => 'ASC'
+				'date_start' => 'DESC'
 			]
 		);
 
