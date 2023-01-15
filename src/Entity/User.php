@@ -155,12 +155,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: University::class, inversedBy: 'universityUserHome')]
     private Collection $universityHome;
 
+    #[ORM\OneToMany(mappedBy: 'employee_out', targetEntity: LeaveCompany::class)]
+    private Collection $leaveCompanies;
+
     public function __construct()
     {
         $this->cusUm = new ArrayCollection();
         $this->cusBm = new ArrayCollection();
         $this->managerEmployee = new ArrayCollection();
         $this->universityHome = new ArrayCollection();
+        $this->leaveCompanies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -794,6 +798,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeUniversityHome(University $universityHome): self
     {
         $this->universityHome->removeElement($universityHome);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LeaveCompany>
+     */
+    public function getLeaveCompanies(): Collection
+    {
+        return $this->leaveCompanies;
+    }
+
+    public function addLeaveCompany(LeaveCompany $leaveCompany): self
+    {
+        if (!$this->leaveCompanies->contains($leaveCompany)) {
+            $this->leaveCompanies->add($leaveCompany);
+            $leaveCompany->setEmployeeOut($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeaveCompany(LeaveCompany $leaveCompany): self
+    {
+        if ($this->leaveCompanies->removeElement($leaveCompany)) {
+            // set the owning side to null (unless already changed)
+            if ($leaveCompany->getEmployeeOut() === $this) {
+                $leaveCompany->setEmployeeOut(null);
+            }
+        }
 
         return $this;
     }
