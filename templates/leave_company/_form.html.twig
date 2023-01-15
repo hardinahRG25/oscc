@@ -1,0 +1,23 @@
+{{ form_start(form) }}
+<div class="row">
+	<div class="col-md-4">
+		<div class="input-group input-group-dynamic is-filled my-3 is-filled">
+			{{ form_label(form.date_resignation, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.date_resignation, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+	<div class="col-md-8">
+		<div class="input-group input-group-dynamic is-filled my-3 is-filled">
+			{{ form_label(form.employee_out, null, {'label_attr': {'class':'form-label'}}) }}
+			{{ form_widget(form.employee_out, {'attr': {'class':'form-control'}}) }}
+		</div>
+	</div>
+
+	<div class="input-group input-group-dynamic">
+		{{ form_widget(form.reason_resignation, {'attr': {'class':'form-control'}}) }}
+	</div>
+</div>
+<div class="d-flex justify-content-end mt-4">
+	<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+</div>
+{{ form_end(form) }}

@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit LeaveCompany{% endblock %}
+
+{% block body %}
+    <h1>Edit LeaveCompany</h1>
+
+    {{ include('leave_company/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_leave_company_index') }}">back to list</a>
+
+    {{ include('leave_company/_delete_form.html.twig') }}
+{% endblock %}
