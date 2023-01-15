@@ -349,6 +349,38 @@
         <source>State</source>
         <target>Etat</target>
       </trans-unit>
+      <trans-unit id="PQ1E2Cp" resname="Date resignation">
+        <source>Date resignation</source>
+        <target>Date de sorite</target>
+      </trans-unit>
+      <trans-unit id="Yf7KqaX" resname="Reason resignation">
+        <source>Reason resignation</source>
+        <target>Motif de démission</target>
+      </trans-unit>
+      <trans-unit id="MezHz68" resname="Date d'enregistrement">
+        <source>Date d'enregistrement</source>
+        <target>Date d'enregistrement</target>
+      </trans-unit>
+      <trans-unit id="pseoS6p" resname="Finish">
+        <source>Finish</source>
+        <target>Terminer</target>
+      </trans-unit>
+      <trans-unit id="d1tb_WR" resname="Created at">
+        <source>Created at</source>
+        <target>Création</target>
+      </trans-unit>
+      <trans-unit id="ZZdcs3x" resname="Date output">
+        <source>Date output</source>
+        <target>Date de sortie</target>
+      </trans-unit>
+      <trans-unit id="jPtBCu3" resname="Resignation">
+        <source>Resignation</source>
+        <target>Démission</target>
+      </trans-unit>
+      <trans-unit id="HWieGmw" resname="New output">
+        <source>New output</source>
+        <target>Nouvelle sortie</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>
