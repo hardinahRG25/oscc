@@ -11,7 +11,7 @@
 - MySQL
 
 # **Credits**
-[OSCC](https://github.com/hardnovity21/oscc) -  initié par l'equipe Unit manager et développé par Toky et Hardinah. Architecte Toky Ralala.
+[OSCC](https://github.com/hardnovity21/oscc) -  initié par l'equipe Unit manager Novity et développé par Toky et Hardinah. Architecte Toky Ralala.
 
 ## License information
 novity 2022
@@ -20,7 +20,7 @@ novity 2022
 1 - Install all dependencies :
 
 ~~~
-    composer install
+    composer install and npm install for webpack encore
 ~~~
 
 
