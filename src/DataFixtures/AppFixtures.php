@@ -33,9 +33,9 @@ class AppFixtures extends Fixture
 	{
 		// Users
 		$users = [];
-		$typeContract = ['CDI', 'CDD', 'CONSULTANT', 'ALTERNANCE', 'STAGIAIRE'];
-		$maritalStatus = ['CELIBATAIRE', 'MARIE(E)', 'VEUF(VE)'];
-		$location = ['Ampandrana', 'Analakely', 'Itaosy', 'Besarety', 'Ivato', 'Malaza', 'Ankorondrano', '67ha', 'Isotry', 'Ampasapito'];
+		$typeContract = ['SALARIE', 'INDEPENDANT'];
+		$maritalStatus = ['Celibataire', 'Marié(e)'];
+		$location = ['MADAGASCAR', 'MAURICE'];
 		$university = ['ENI', 'ISPM', 'AKANTSO', 'MISA', 'INFOCENTRE', 'CNTEMAD', 'IT', 'AUTODIDACTE'];
 		$langage = ['PHP', 'JAVA', 'C', 'C#', 'PYTHON', 'JAVASCRIPT', 'REACT', 'NODEJS'];
 		$degree = ['M2 Info', 'M2 MAth', 'Licence informatique', 'M2 Polytech', 'M1'];
@@ -70,7 +70,7 @@ class AppFixtures extends Fixture
 			->setChildNumber(mt_rand(0, 5))
 			->setGender($gender[mt_rand(0, 1)])
 			->setLocation('Antananarivo')
-			->setContacts('124556565656565 +26134 56 234 56')
+			->setContacts('+26134 56 234 56')
 			->setTechDominantCv($langage[mt_rand(0, count($langage) - 1)])
 			->setTechMaster($langage[mt_rand(0, count($langage) - 1)])
 			->setTechActive($langage[mt_rand(0, count($langage) - 1)])
@@ -89,6 +89,7 @@ class AppFixtures extends Fixture
 			$location_name = $location[mt_rand(0, count($location) - 1)];
 			$user->setEmail($this->faker->email())
 				->setPassword('password123456')
+				->setRoles(['ROLE_USER'])
 				->setLastname($this->faker->lastName())
 				->setFirstname($this->faker->firstName())
 				->setDateEntry(new DateTime($this->faker->date()))
@@ -102,7 +103,7 @@ class AppFixtures extends Fixture
 				->setCity($this->faker->city)
 				->setChildNumber(mt_rand(0, 5))
 				->setLocation($location_name)
-				->setContacts('124556565656565 +26134 56 234 56')
+				->setContacts('+26134 56 234 56')
 				->setTechDominantCv($langage[mt_rand(0, count($langage) - 1)])
 				->setTechMaster($langage[mt_rand(0, count($langage) - 1)])
 				->setTechActive($langage[mt_rand(0, count($langage) - 1)])
