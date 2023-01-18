@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  test-pma:
+    image: phpmyadmin/phpmyadmin
+    container_name: test-pma
+    ports:
+      - 4011:80
+    networks:
+      - test-network
+    environment:
+      PMA_HOST: test-db
+      PMA_PORT: 3306
+      PMA_USER: root
+      PMA_PASSWORD: password
