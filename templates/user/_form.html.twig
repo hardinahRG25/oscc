@@ -334,6 +334,7 @@
 						<thead>
 							<tr>
 								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{% trans %}Customer{% endtrans %}</th>
+								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{% trans %}Employee{% endtrans %}</th>
 								<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">{% trans %}Job{% endtrans %}</th>
 								<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{% trans %}Technos{% endtrans %}</th>
 								<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{% trans %}Start date{% endtrans %}</th>
@@ -349,116 +350,12 @@
 						<tbody>
 							{% if missions is not empty %}
 								{% for mission in missions %}
-									<tr>
-										<td>
-											<div class="d-flex px-2 py-1">
-												<div class="d-flex flex-column justify-content-center">
-													<p class="text-xs text-secondary mb-0">{{mission.customer}}</p>
-												</div>
-											</div>
-										</td>
-										<td>
-											<p class="text-xs font-weight-bold mb-0">{{mission.job}}</p>
-										</td>
-										<td>
-											<p class="text-xs font-weight-bold mb-0">
-												{% for field in mission.techPrincipal %}
-													<div style="min-width: 12%;">
-														<span class="badge badge-sm badge-info">{{ field.nameLanguage }}</span>
-													</div>
-												{% endfor %}
-											</p>
-										</td>
-										<td class="align-middle text-center">
-											<span class="text-secondary text-xs font-weight-normal">{{ mission.dateStart ? mission.dateStart|date('d/m/Y') : '' }}</span>
-										</td>
-										<td class="align-middle text-center">
-											<span class="text-secondary text-xs font-weight-normal">{{ mission.dateEnd ? mission.dateEnd|date('d/m/Y') : '-' }}</span>
-										</td>
-										<td class="align-middle text-left">
-											<span class="text-secondary text-xs font-weight-normal">{{ mission.duration ? mission.duration: '-' }}</span>
-										</td>
-										<td class="align-middle text-center text-sm">
-											<span class="badge badge-sm badge-success">{{ mission.status }}</span>
-										</td>
-										<td>
-											<div class="d-flex px-2 py-1">
-												<div class="d-flex flex-column justify-content-center">
-													<p class="text-xs text-secondary mb-0">{{mission.reasonContractEnd}}</p>
-												</div>
-											</div>
-										</td>
-										<td>
-											<p class="text-xs font-weight-bold mb-0">{{mission.job}}</p>
-										</td>
-										<td>
-											<p class="text-xs font-weight-bold mb-0">{{mission.job}}</p>
-										</td>
-										<td class="align-middle">
-											<a href="javascript:;" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip" data-original-title="Edit user">
-												<button class="btn btn-danger">
-													{% trans %}Finish{% endtrans %}
-												</button>
-											</a>
-										</td>
-									</tr>
+									{{ dump(mission) }}
+									{{ dump(mission.customer) }}
+									{{ dump(mission.customer.businessManager) }}
+
 								{% endfor %}
 							{% endif %}
-							{% for mission in missions %}
-								<tr>
-									<td>
-										<div class="d-flex px-2 py-1">
-											<div class="d-flex flex-column justify-content-center">
-												<p class="text-xs text-secondary mb-0">{{mission.customer}}</p>
-											</div>
-										</div>
-									</td>
-									<td>
-										<p class="text-xs font-weight-bold mb-0">{{mission.job}}</p>
-									</td>
-									<td>
-										<p class="text-xs font-weight-bold mb-0">
-											{% for field in mission.techPrincipal %}
-												<div style="min-width: 12%;">
-													<span class="badge badge-sm badge-info">{{ field.nameLanguage }}</span>
-												</div>
-											{% endfor %}
-										</p>
-									</td>
-									<td class="align-middle text-center">
-										<span class="text-secondary text-xs font-weight-normal">{{ mission.dateStart ? mission.dateStart|date('d/m/Y') : '' }}</span>
-									</td>
-									<td class="align-middle text-center">
-										<span class="text-secondary text-xs font-weight-normal">{{ mission.dateEnd ? mission.dateEnd|date('d/m/Y') : '-' }}</span>
-									</td>
-									<td class="align-middle text-left">
-										<span class="text-secondary text-xs font-weight-normal">{{ mission.duration ? mission.duration: '-' }}</span>
-									</td>
-									<td class="align-middle text-center text-sm">
-										<span class="badge badge-sm badge-success">{{ mission.status }}</span>
-									</td>
-									<td>
-										<div class="d-flex px-2 py-1">
-											<div class="d-flex flex-column justify-content-center">
-												<p class="text-xs text-secondary mb-0">{{mission.reasonContractEnd}}</p>
-											</div>
-										</div>
-									</td>
-									<td>
-										<p class="text-xs font-weight-bold mb-0">{{mission.job}}</p>
-									</td>
-									<td>
-										<p class="text-xs font-weight-bold mb-0">{{mission.job}}</p>
-									</td>
-									<td class="align-middle">
-										<a href="javascript:;" class="text-secondary font-weight-normal text-xs" data-toggle="tooltip" data-original-title="Edit user">
-											<button class="btn btn-danger">
-												{% trans %}Finish{% endtrans %}
-											</button>
-										</a>
-									</td>
-								</tr>
-							{% endfor %}
 						</tbody>
 					</table>
 				</div>

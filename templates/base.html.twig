@@ -22,22 +22,19 @@
 
 
 				<!-- jquery vendor -->
-				<script type="text/javascript" src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
-
 				<script type="text/javascript" src="{{ asset('assets/js/plugins/jquery-3.6.0.min.js') }}"></script>
+				<script type="text/javascript" src="{{ asset('assets/js/material-dashboard.min.js') }}"></script>
+				<script type="text/javascript" src="{{ asset('template/js/lib/jquery.nanoscroller.min.js')}}"></script>
+				<script type="text/javascript" src="{{ asset('template/js/lib/menubar/sidebar.js')}}"></script>
+				<script type="text/javascript" src="{{ asset('template/js/lib/preloader/pace.min.js')}}"></script>
 				<!-- sidebar -->
 				{% block javascripts %}
-					<!-- bootstrap -->
-					<script type="text/javascript" src="{{ asset('template/js/lib/bootstrap.min.js')}}"></script>
-					<script type="text/javascript" src="{{ asset('template/js/scripts.js')}}"></script>
 
-					<script type="text/javascript" src="{{ asset('template/js/lib/jquery.nanoscroller.min.js')}}"></script>
+
 					<!-- nano scroller -->
-					<script type="text/javascript" src="{{ asset('template/js/lib/menubar/sidebar.js')}}"></script>
-					<script type="text/javascript" src="{{ asset('template/js/lib/preloader/pace.min.js')}}"></script>
+
 					<!-- scripit init-->
-					<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
-					<script type="text/javascript" src="{{ asset('assets/datatables/js/datatables.min.js') }}"></script>
+					<!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc --><script type="text/javascript" src="{{ asset('assets/datatables/js/datatables.min.js') }}"> </script>
 					<script type="text/javascript" src="{{ asset('bundles/datatables/js/datatables.js') }}"></script>
 					<script type="text/javascript" src="{{ asset('assets/js/core/popper.min.js') }}"></script>
 					<script type="text/javascript" src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>

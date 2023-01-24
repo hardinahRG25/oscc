@@ -40,6 +40,39 @@ class MissionRepository extends ServiceEntityRepository
         }
     }
 
+    public function findMissionUserSelected(int $employee = null)
+    {
+        $qb =  $this->createQueryBuilder('m')
+            ->select('m', 'u', 'c')
+            ->leftJoin('m.employee', 'u')
+            ->leftJoin('m.customer', 'c')
+            ->addSelect('bm', 'um')
+            ->leftJoin('c.businessManager', 'bm')
+            ->leftJoin('c.unitManager', 'um')
+            ->andWhere('m.employee = :val')
+            ->setParameter('val', $employee)
+            ->orderBy('m.date_start', 'DESC')
+            ->setMaxResults(15);
+        return $qb->getQuery()
+            ->getArrayResult();
+    }
+
+    /**
+     * a voir 
+     */
+    // public function findMissionUserSelected(): array
+    // {
+    //     $qb = $this->createQueryBuilder('m')
+    //         ->select('m', 'u', 'c')
+    //         ->leftJoin('m.employee', 'u')
+    //         ->leftJoin('m.customer', 'c')
+    //         ->addSelect('bm', 'um')
+    //         ->leftJoin('c.businessManager', 'bm')
+    //         ->leftJoin('c.unitManager', 'um');
+
+    //     return $qb->getQuery()->getArrayResult();
+    // }
+
     // public function findMissionManager(int $employee = null): array
     // {
     //     $qb = $this->createQueryBuilder('m');
@@ -72,4 +105,6 @@ class MissionRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+
 }

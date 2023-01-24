@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Service\Conversion;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\AbstractQuery;
 use App\Repository\UserRepository;
@@ -21,6 +20,7 @@ use Omines\DataTablesBundle\Column\DateTimeColumn;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORM\SearchCriteriaProvider;
+use App\Service\Conversion;
 
 #[Route('/collaborateur')]
 class UserController extends AbstractController
@@ -34,9 +34,8 @@ class UserController extends AbstractController
 	private $convert;
 	private $statusClassColor;
 
-	public function __construct(Conversion $conversion)
+	public function __construct()
 	{
-		$this->convert = $conversion;
 	}
 
 	/**
@@ -50,8 +49,11 @@ class UserController extends AbstractController
 
 
 	#[Route('/list', name: 'app_user_list', methods: ['POST', 'GET'])]
-	public function index(UserRepository $userRepository, Request $request, DataTableFactory $dataTableFactory): Response
+	public function index(UserRepository $userRepository, Request $request, DataTableFactory $dataTableFactory, Conversion $conversion): Response
 	{
+
+		// $conversion = $this->container->get('oscc.conversion');
+		$this->convert = $conversion;
 		$table = $dataTableFactory->create()
 			->add('id', NumberColumn::class, ['visible' => false])
 			->add('fullName', TextColumn::class, [
@@ -137,7 +139,8 @@ class UserController extends AbstractController
 							u.original_company,
 							u.contacts,
 							u.contract_type")
-						->from(User::class, 'u');
+						->from(User::class, 'u')
+						->orderBy('u.firstname,u.lastname,u.id', 'ASC');
 				}
 			])
 			->handleRequest($request);
@@ -199,18 +202,18 @@ class UserController extends AbstractController
 	#[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
 	public function edit(Request $request, User $user, UserRepository $userRepository, MissionRepository $missionRepository): Response
 	{
-		$list_mission_user = $missionRepository->findBy(
-			[
-				'employee' => intval($request->get('id'))
-			],
-			[
-				'date_start' => 'DESC'
-			]
-		);
+		// $list_mission_user = $missionRepository->findBy(
+		// 	[
+		// 		'employee' => intval($request->get('id'))
+		// 	],
+		// 	[
+		// 		'date_start' => 'DESC'
+		// 	]
+		// );
+		$listMissions = $missionRepository->findMissionUserSelected(intval($request->get('id')));
 
-		foreach ($list_mission_user as $key => $value) {
-			$list_mission_user[$key]->getDuration();
-		}
+		// var_dump($missions[0]['customer']['businessManager']['firstname'] . ' ' . $missions[0]['customer']['businessManager']['lastname']);
+		// die;
 
 		$form = $this->createForm(UserType::class, $user);
 		$form->remove('password');
@@ -225,7 +228,7 @@ class UserController extends AbstractController
 		return $this->renderForm('user/edit.html.twig', [
 			'user' => $user,
 			'form' => $form,
-			'missions' => $list_mission_user
+			'missions' => $listMissions
 		]);
 	}
 

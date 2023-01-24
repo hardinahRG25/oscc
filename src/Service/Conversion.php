@@ -4,6 +4,7 @@ namespace App\Service;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Psr\Log\LoggerInterface;
 
 class Conversion
 {
@@ -24,9 +25,11 @@ class Conversion
      */
     private $years;
 
-    public function __construct()
+    // public function __construct(LoggerInterface $logger)
+    public function __construct($max_month)
     {
-        $this->maxMonth = 12;
+        // $logger->info('Service conversion');
+        $this->maxMonth = $max_month;
         $this->days = "jours";
         $this->month = "mois";
         $this->years = "année(s)";

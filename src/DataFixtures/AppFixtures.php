@@ -33,9 +33,9 @@ class AppFixtures extends Fixture
 	{
 		// Users
 		$users = [];
-		$typeContract = ['CDI', 'CDD', 'CONSULTANT', 'ALTERNANCE', 'STAGIAIRE'];
-		$maritalStatus = ['CELIBATAIRE', 'MARIE(E)', 'VEUF(VE)'];
-		$location = ['Ampandrana', 'Analakely', 'Itaosy', 'Besarety', 'Ivato', 'Malaza', 'Ankorondrano', '67ha', 'Isotry', 'Ampasapito'];
+		$typeContract = ['SALARIE', 'INDEPENDANT'];
+		$maritalStatus = ['Celibataire', 'Marié(e)'];
+		$location = ['MADAGASCAR', 'MAURICE'];
 		$university = ['ENI', 'ISPM', 'AKANTSO', 'MISA', 'INFOCENTRE', 'CNTEMAD', 'IT', 'AUTODIDACTE'];
 		$langage = ['PHP', 'JAVA', 'C', 'C#', 'PYTHON', 'JAVASCRIPT', 'REACT', 'NODEJS'];
 		$degree = ['M2 Info', 'M2 MAth', 'Licence informatique', 'M2 Polytech', 'M1'];
@@ -70,7 +70,7 @@ class AppFixtures extends Fixture
 			->setChildNumber(mt_rand(0, 5))
 			->setGender($gender[mt_rand(0, 1)])
 			->setLocation('Antananarivo')
-			->setContacts('124556565656565 +26134 56 234 56')
+			->setContacts('+26134 56 234 56')
 			->setTechDominantCv($langage[mt_rand(0, count($langage) - 1)])
 			->setTechMaster($langage[mt_rand(0, count($langage) - 1)])
 			->setTechActive($langage[mt_rand(0, count($langage) - 1)])
@@ -84,11 +84,12 @@ class AppFixtures extends Fixture
 		$users[] = $admin;
 		$manager->persist($admin);
 
-		for ($i = 0; $i < mt_rand(4, 21); $i++) {
-			$user = new User();
+		for ($i = 1; $i <= 2; $i++) {
+			$unitManager = new User();
 			$location_name = $location[mt_rand(0, count($location) - 1)];
-			$user->setEmail($this->faker->email())
+			$unitManager->setEmail($this->faker->email())
 				->setPassword('password123456')
+				->setRoles(['ROLE_USER'])
 				->setLastname($this->faker->lastName())
 				->setFirstname($this->faker->firstName())
 				->setDateEntry(new DateTime($this->faker->date()))
@@ -102,7 +103,73 @@ class AppFixtures extends Fixture
 				->setCity($this->faker->city)
 				->setChildNumber(mt_rand(0, 5))
 				->setLocation($location_name)
-				->setContacts('124556565656565 +26134 56 234 56')
+				->setContacts('+261 34 56 234 56')
+				->setTechDominantCv($langage[mt_rand(0, count($langage) - 1)])
+				->setTechMaster($langage[mt_rand(0, count($langage) - 1)])
+				->setTechActive($langage[mt_rand(0, count($langage) - 1)])
+				->setTechOthers('Js, Ndde, React, Angular')
+				->setEnglishLevel($level[mt_rand(0, count($level) - 1)])
+				->setJob('UM')
+				->setOriginalCompany($this->faker->company())
+				->setGender($gender[mt_rand(0, 1)])
+				->setCreatedAt(new \DateTimeImmutable())
+				->setUpdatedAt(new \DateTimeImmutable());
+
+			$manager->persist($unitManager);
+		}
+		for ($i = 0; $i < 3; $i++) {
+			$businessManager = new User();
+			$location_name = $location[mt_rand(0, count($location) - 1)];
+			$businessManager->setEmail($this->faker->email())
+				->setPassword('password123456')
+				->setRoles(['ROLE_USER'])
+				->setLastname($this->faker->lastName())
+				->setFirstname($this->faker->firstName())
+				->setDateEntry(new DateTime($this->faker->date()))
+				->setCountry('France')
+				->setQualification('qualification ' . ($i + 1))
+				->setContractType($typeContract[mt_rand(0, count($typeContract) - 1)])
+				->setBirthDate(new DateTime($this->faker->date()))
+				->setMatrimonialStatus($maritalStatus[mt_rand(0, count($maritalStatus) - 1)])
+				->setAddress($this->faker->streetAddress)
+				->setDistrict($this->faker->locale)
+				->setCity($this->faker->city)
+				->setChildNumber(mt_rand(0, 5))
+				->setLocation($location_name)
+				->setContacts('+261 34 56 234 56')
+				->setTechDominantCv($langage[mt_rand(0, count($langage) - 1)])
+				->setTechMaster($langage[mt_rand(0, count($langage) - 1)])
+				->setTechActive($langage[mt_rand(0, count($langage) - 1)])
+				->setTechOthers('Js, Ndde, React, Angular')
+				->setEnglishLevel($level[mt_rand(0, count($level) - 1)])
+				->setJob('BM')
+				->setOriginalCompany($this->faker->company())
+				->setGender($gender[mt_rand(0, 1)])
+				->setCreatedAt(new \DateTimeImmutable())
+				->setUpdatedAt(new \DateTimeImmutable());
+			$manager->persist($businessManager);
+		}
+
+		for ($i = 0; $i < mt_rand(4, 21); $i++) {
+			$user = new User();
+			$location_name = $location[mt_rand(0, count($location) - 1)];
+			$user->setEmail($this->faker->email())
+				->setPassword('password123456')
+				->setRoles(['ROLE_USER'])
+				->setLastname($this->faker->lastName())
+				->setFirstname($this->faker->firstName())
+				->setDateEntry(new DateTime($this->faker->date()))
+				->setCountry('France')
+				->setQualification('qualification ' . ($i + 1))
+				->setContractType($typeContract[mt_rand(0, count($typeContract) - 1)])
+				->setBirthDate(new DateTime($this->faker->date()))
+				->setMatrimonialStatus($maritalStatus[mt_rand(0, count($maritalStatus) - 1)])
+				->setAddress($this->faker->streetAddress)
+				->setDistrict($this->faker->locale)
+				->setCity($this->faker->city)
+				->setChildNumber(mt_rand(0, 5))
+				->setLocation($location_name)
+				->setContacts('+26134 56 234 56')
 				->setTechDominantCv($langage[mt_rand(0, count($langage) - 1)])
 				->setTechMaster($langage[mt_rand(0, count($langage) - 1)])
 				->setTechActive($langage[mt_rand(0, count($langage) - 1)])
@@ -148,6 +215,31 @@ class AppFixtures extends Fixture
 			$university->setNameUniversity($universityArray[$i]);
 			$manager->persist($university);
 		}
+		//customer
+		for ($i = 0; $i < 5; $i++) {
+			$customer = new Customer();
+			$customer->setAnnualClosure('Fin d année')
+				// ->setBusinessManager($businessManager->getId())
+				// ->setBusinessSector($sectorCustomer[mt_rand(0, 2)])
+				->setContacts($this->faker->companyEmail())
+				->setCra('Fin du mois')
+				->setDateCollaboration($this->faker->dateTimeBetween('-1 months', '-1 seconds'))
+				->setDayOff('10 par an ')
+				->setImportantCriteria($this->faker->text(10))
+				->setLocation($this->faker->country)
+				->setNameCompany($this->faker->company)
+				->setNotes($this->faker->text)
+				->setPcSpecification($this->faker->text(10))
+				->setSizeCompany(mt_rand(10, 20) . ' personnes')
+				->setStackTech([])
+				->setTeamStructure($this->faker->text(50))
+				// ->setTypeActivity($activityCustomer[mt_rand(0, 2)])
+				// ->setUnitManager($unitManager[mt_rand(0, 2)])
+				->setWorkTime('09h-18h');
+			$manager->persist($customer);
+		}
+
+
 		//Save
 
 		$manager->flush();

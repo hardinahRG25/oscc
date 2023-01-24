@@ -42,11 +42,11 @@ class Mission
 
     private ?string $duration;
 
-    #[ORM\ManyToOne(inversedBy: 'missions')]
+    #[ORM\ManyToOne(inversedBy: 'missionsUser')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $employee = null;
 
-    #[ORM\ManyToOne(inversedBy: 'missions')]
+    #[ORM\ManyToOne(inversedBy: 'missionsCustomer')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
 
