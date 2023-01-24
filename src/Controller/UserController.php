@@ -139,7 +139,8 @@ class UserController extends AbstractController
 							u.original_company,
 							u.contacts,
 							u.contract_type")
-						->from(User::class, 'u');
+						->from(User::class, 'u')
+						->orderBy('u.firstname,u.lastname,u.id', 'ASC');
 				}
 			])
 			->handleRequest($request);
@@ -201,18 +202,18 @@ class UserController extends AbstractController
 	#[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
 	public function edit(Request $request, User $user, UserRepository $userRepository, MissionRepository $missionRepository): Response
 	{
-		$list_mission_user = $missionRepository->findBy(
-			[
-				'employee' => intval($request->get('id'))
-			],
-			[
-				'date_start' => 'DESC'
-			]
-		);
+		// $list_mission_user = $missionRepository->findBy(
+		// 	[
+		// 		'employee' => intval($request->get('id'))
+		// 	],
+		// 	[
+		// 		'date_start' => 'DESC'
+		// 	]
+		// );
+		$listMissions = $missionRepository->findMissionUserSelected(intval($request->get('id')));
 
-		foreach ($list_mission_user as $key => $value) {
-			//$list_mission_user[$key]->getDuration();
-		}
+		// var_dump($missions[0]['customer']['businessManager']['firstname'] . ' ' . $missions[0]['customer']['businessManager']['lastname']);
+		// die;
 
 		$form = $this->createForm(UserType::class, $user);
 		$form->remove('password');
@@ -227,7 +228,7 @@ class UserController extends AbstractController
 		return $this->renderForm('user/edit.html.twig', [
 			'user' => $user,
 			'form' => $form,
-			'missions' => $list_mission_user
+			'missions' => $listMissions
 		]);
 	}
 
