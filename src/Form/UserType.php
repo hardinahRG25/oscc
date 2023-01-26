@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\University;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Symfony\Component\Form\AbstractType;
@@ -18,15 +19,24 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class UserType extends AbstractType
 {
+
+	private $translator;
+
+	public function __construct(TranslatorInterface $translator)
+	{
+		$this->translator = $translator;
+	}
 	public function buildForm(FormBuilderInterface $builder, array $options): void
 	{
 		$builder
 			->add('imageFile', VichImageType::class, [
-				'label' => 'Photo de profil',
+				'label' => $this->translator->trans('Profil picture'),
 				'label_attr' => [
 					'class' => 'form-label mt-4'
 				],
@@ -37,40 +47,59 @@ class UserType extends AbstractType
 					'minlength' => '2',
 					'maxlength' => '150',
 				],
-				'label' => 'Nom'
+				'label' => $this->translator->trans('Firstname')
 			])
 			->add('lastname', TextType::class, [
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '150',
 				],
-				'label' => 'Prénom'
+				'label' => $this->translator->trans('Lastname')
 			])
 			->add('email', EmailType::class)
-			->add('password', PasswordType::class, [
-				'label' => 'Mot de passe'
+			->add('password', RepeatedType::class, [
+				'type' => PasswordType::class,
+				'first_options' => [
+					'attr' => [
+						'class' => 'form-control'
+					],
+					'label' => $this->translator->trans('Password'),
+					'error_bubbling' => true
+				],
+				'second_options' => [
+					'attr' => [
+						'class' => 'form-control'
+					],
+					'label' => $this->translator->trans('Password confirm')
+				],
+				'invalid_message' => $this->translator->trans('The passwords do not match.') //'Les mots de passe ne correspondent pas.'
 			])
 			->add('date_entry', DateType::class, [
 				'label' => 'Date d\'entrée',
 				'widget' => 'single_text',
 			])
 			->add('country', TextType::class, [
-				'label' => 'Pays'
+				'label' => $this->translator->trans('Country')
 			])
 			->add('city', TextType::class, [
-				'label' => 'Ville',
+				'label' => $this->translator->trans('City'),
 				'required' => false
 			])
 			->add('district', TextType::class, [
-				'label' => 'Quartier',
+				'label' => $this->translator->trans('District'),
 				'required' => false
 			])
 			->add('qualification')
-			->add('contract_type', TextType::class, [
-				'label' => 'Type de contrat'
+			->add('contract_type', ChoiceType::class, [
+				'label' => $this->translator->trans('Contract type'),
+				"placeholder" => $this->translator->trans('Choose...'),
+				'choices' => [
+					$this->translator->trans('Worker') => 'SALARIE',
+					$this->translator->trans('Independant') => 'INDEPENDANT'
+				],
 			])
 			->add('manager', EntityType::class, [
-				"label" => "Unit Manager",
+				"label" => $this->translator->trans('Unit manager'),
 				"attr" => [
 					"class" => "form-control mb-2 select2"
 				],
@@ -84,27 +113,37 @@ class UserType extends AbstractType
 				"choice_label" => function (User $user) {
 					return $user->getFullName();
 				},
-				"placeholder" => "Choisissez..."
+				"placeholder" => $this->translator->trans('Choose...')
 			])
 			->add('birth_date', DateType::class, [
-				'label' => 'Date de naissance',
+				'label' => $this->translator->trans('Birthday'),
 				'widget' => 'single_text',
 			])
 			->add('matrimonial_status', ChoiceType::class, [
-				'label' => 'Situation matrimoniale',
-				"placeholder" => "Choisissez...",
+				'label' => $this->translator->trans('Marital status'),
+				"placeholder" => $this->translator->trans('Choose...'),
 				'choices' => [
-					'CELIBATAIRE' => 'CELIBATAIRE',
-					'MARIE(E)' => 'MARIE(E)'
+					$this->translator->trans('Celibataire') => 'CELIBATAIRE',
+					$this->translator->trans('Married') => 'MARIE(E)'
 				],
 			])
 			->add('gender', ChoiceType::class, [
-				'label' => 'Genre',
-				"placeholder" => "Choisissez...",
+				'label' => $this->translator->trans('Gender'),
+				"placeholder" => $this->translator->trans('Choose...'),
 				'choices' => [
-					'Masculin' => 'm',
-					'Féminin' => 'f'
+					$this->translator->trans('Male') => 'm',
+					$this->translator->trans('Female') => 'f'
 				],
+			])
+			->add('universityHome', EntityType::class, [
+				'class' => University::class,
+				'label' => $this->translator->trans('home university'),
+				'label_attr' => [
+					'class' => 'form-label mt-4'
+				],
+				'choice_label' => 'nameUniversity',
+				'multiple' => true,
+				'expanded' => true,
 			])
 			->add('childNumber', IntegerType::class, [
 				'attr' => [
@@ -112,27 +151,27 @@ class UserType extends AbstractType
 					'max' => 10
 				],
 				'required' => false,
-				'label' => 'Nombre d\'enfant',
+				'label' => $this->translator->trans('Child number'),
 				'constraints' => [
 					new Assert\LessThan(10)
 				]
 			])
 			->add('location', ChoiceType::class, [
-				'label' => 'Pays de localisation',
-				"placeholder" => "Choisissez...",
+				'label' => $this->translator->trans('Country location'),
+				"placeholder" => $this->translator->trans('Choose...'),
 				'choices' => [
 					'MADAGASCAR' => 'MADAGASCAR',
 					'MAURICE' => 'MAURICE'
 				],
 			])
 			->add('address', TextType::class, [
-				'label' => 'Adresse'
+				'label' => $this->translator->trans('Adress')
 			])
 			->add('contacts', TextType::class, [
-				'label' => 'Télephone principale'
+				'label' => $this->translator->trans('Phone principal')
 			])
 			->add('contactSecondary', TextType::class, [
-				'label' => 'Télephone secondaire',
+				'label' => $this->translator->trans('Phone secondary'),
 				'required' => false
 			])
 			->add('tech_dominant_cv', TextType::class, [
@@ -158,12 +197,11 @@ class UserType extends AbstractType
 			])
 			->add('english_level', ChoiceType::class, [
 				'label' => 'Niveau Anglais',
-				"placeholder" => "Choisissez...",
+				"placeholder" => $this->translator->trans('Choose...'),
 				'choices' => [
 					'DEBUTANT' => 'DEBUTANT',
 					'MOYEN' => 'MOYEN',
 					'AVANCE' => 'AVANCE',
-					'EXCELLENT' => 'EXCELLENT',
 				],
 			])
 			->add('cv_observations', TextareaType::class, [

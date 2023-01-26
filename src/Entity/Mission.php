@@ -4,13 +4,17 @@ namespace App\Entity;
 
 use DateInterval;
 use DateTimeImmutable;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\StackTechLanguage;
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\MissionRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 #[ORM\Entity(repositoryClass: MissionRepository::class)]
+#[ApiResource]
+
 class Mission
 {
     #[ORM\Id]
@@ -36,11 +40,13 @@ class Mission
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $date_create_info = null;
 
-    #[ORM\ManyToOne(inversedBy: 'missions')]
+    private ?string $duration;
+
+    #[ORM\ManyToOne(inversedBy: 'missionsUser')]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $employee = null;
 
-    #[ORM\ManyToOne(inversedBy: 'missions')]
+    #[ORM\ManyToOne(inversedBy: 'missionsCustomer')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Customer $customer = null;
 
@@ -136,6 +142,18 @@ class Mission
         return $this;
     }
 
+    public function getDuration(): ?string
+    {
+        return $response = '4342';
+    }
+
+    public function setDuration(?string $duration): self
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
     public function getEmployee(): ?User
     {
         return $this->employee;
@@ -170,15 +188,6 @@ class Mission
         $this->status = $status;
 
         return $this;
-    }
-
-    public function getDuration(): ?string
-    {
-        $response = "En cours";
-        if (!empty($this->getDateEnd() && $this->getDateEnd() != null)) {
-            $response = $this->getDateEnd()->diff($this->getDateStart())->format('%y an(s), %m mois, %d jours');
-        }
-        return $response;
     }
 
     /**

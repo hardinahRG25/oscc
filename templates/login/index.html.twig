@@ -1,28 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Connexion
+{% block title %}
+	{% trans %}
+	Login page
+	{% endtrans %}
 {% endblock %}
 
 {% block body %}
-	<span class="mask bg-gradient-dark opacity-6"></span>
-	<div class="container my-auto">
+	<div class="container my-auto" style="padding: 150px;">
 		<div class="row">
 			<div class="col-lg-4 col-md-8 col-12 mx-auto">
 				<div class="card z-index-0 fadeIn3 fadeInBottom">
 					<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
 						<div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
-							<h4 class="text-white font-weight-bolder text-center mt-2 mb-0">Connectez-vous</h4>
+							<h4 class="text-white font-weight-bolder text-center mt-2 mb-0">{% trans %}
+								Log in{% endtrans %}</h4>
 						</div>
 					</div>
 					<div class="card-body">
 						<form action="{{ path('app_login') }}" method="post" role="form" class="text-start">
 							<div class="input-group input-group-dynamic {% if error %}is-invalid{% endif %} my-3">
-								<label class="form-label" for="username">Email</label>
+								<label class="form-label" for="username">{% trans %}
+									Email{% endtrans %}</label>
 								<input type="email" class="form-control" id="username" name="_username" value="{{ last_username }}"/>
 							</div>
 							<div class="input-group input-group-dynamic {% if error %}is-invalid{% endif %} mb-3">
-								<label class="form-label" for="password">Mot de passe</label>
+								<label class="form-label" for="password">{% trans %}Password{% endtrans %}</label>
 								<input type="password" class="form-control" id="password" name="_password"/>
+								<span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password"></span>
 							</div>
 							{% if error %}
 								<div class="alert alert-danger alert-dismissible text-white fade show" data-auto-dismiss="200" role="alert">
@@ -33,7 +38,7 @@
 								</div>
 							{% endif %}
 							<div class="text-center">
-								<button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Connexion</button>
+								<button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">{% trans %}Connexion{% endtrans %}</button>
 							</div>
 						</form>
 					</div>
@@ -41,9 +46,8 @@
 			</div>
 		</div>
 	</div>
-
-	{% block javascripts %}
-		<script type="text/javascript" src="{{ asset('assets/js/plugins/jquery-3.6.0.min.js') }}"></script>
-		<script type="text/javascript" src="{{ asset('assets/js/custom/login.js') }}"></script>
-	{% endblock %}
+{% endblock %}
+{% block javascripts %}
+	{{ parent() }}
+	<script type="text/javascript" src="{{ asset('assets/js/custom/login.js') }}"></script>
 {% endblock %}

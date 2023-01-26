@@ -2,21 +2,43 @@
 
 namespace App\Service;
 
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Routing\Annotation\Route;
+use Psr\Log\LoggerInterface;
+
 class Conversion
 {
-    private int $maxMonth;
-    private string $days;
-    private string $month;
-    private string $years;
+    /**
+     * @var int
+     */
+    private $maxMonth;
+    /**
+     * @var string
+     */
+    private $days;
+    /**
+     * @var string
+     */
+    private $month;
+    /**
+     * @var string
+     */
+    private $years;
 
-    public function __construct()
+    // public function __construct(LoggerInterface $logger)
+    public function __construct($max_month)
     {
-        $this->maxMonth = 12;
+        // $logger->info('Service conversion');
+        $this->maxMonth = $max_month;
         $this->days = "jours";
         $this->month = "mois";
         $this->years = "année(s)";
     }
 
+    /**
+     * @param string $value
+     * @return string|null
+     */
     public function conversionMonthYear(string $value): ?string
     {
         if (intval($value) > 12) {
@@ -28,6 +50,10 @@ class Conversion
         }
     }
 
+    /**
+     * @param string $gender
+     * @return string|null
+     */
     public function genderString(string $gender): ?string
     {
         if ($gender === 'f') {

@@ -1,0 +1,57 @@
+version: '3.3'
+
+services:
+
+  test-web:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    container_name: test-web
+    hostname: user
+    domainname: host.lo
+    command: nginx -g "daemon off;"
+    links:
+      - test-php
+    ports:
+      - "8011:80"
+    volumes:
+      - ../:/var/www/html/
+    networks:
+      - test-network
+
+  test-php:
+    build:
+      context: ./php
+      dockerfile: Dockerfile
+    container_name: test-php
+    links:
+      - test-db
+    volumes:
+      - ../:/var/www/html
+    user: "1000:www-data"
+    working_dir: /var/www/html/
+    command: php-fpm
+    networks:
+      - test-network
+      - backend
+
+  test-db:
+    image: mysql:5.7
+    container_name: test-db
+    volumes:
+      - ./db/data/:/var/lib/mysql/
+      - ./db/log/:/var/log/mysql/
+    user: "1000:adm"
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: db_oscc
+      MYSQL_USER: toto
+      MYSQL_PASSWORD: password
+    networks:
+      - test-network
+
+networks:
+  test-network:
+    driver: bridge
+  backend:
+    driver: bridge

@@ -51,6 +51,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 100, nullable: true)]
     private ?string $imageName = null;
 
+
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_entry = null;
 
@@ -100,7 +101,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 25)]
     private ?string $english_level = null;
 
-    #[ORM\Column(length: 25, nullable: true)]
+    #[ORM\Column(length: 50, nullable: true)]
     private ?string $original_company = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -151,11 +152,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 1)]
     private ?string $gender = null;
 
+    #[ORM\ManyToMany(targetEntity: University::class, inversedBy: 'universityUserHome')]
+    private Collection $universityHome;
+
+    #[ORM\OneToMany(mappedBy: 'employee_out', targetEntity: LeaveCompany::class)]
+    private Collection $leaveCompanies;
+
     public function __construct()
     {
         $this->cusUm = new ArrayCollection();
         $this->cusBm = new ArrayCollection();
         $this->managerEmployee = new ArrayCollection();
+        $this->universityHome = new ArrayCollection();
+        $this->leaveCompanies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -765,6 +774,60 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setGender(string $gender): self
     {
         $this->gender = $gender;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, University>
+     */
+    public function getUniversityHome(): Collection
+    {
+        return $this->universityHome;
+    }
+
+    public function addUniversityHome(University $universityHome): self
+    {
+        if (!$this->universityHome->contains($universityHome)) {
+            $this->universityHome->add($universityHome);
+        }
+
+        return $this;
+    }
+
+    public function removeUniversityHome(University $universityHome): self
+    {
+        $this->universityHome->removeElement($universityHome);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LeaveCompany>
+     */
+    public function getLeaveCompanies(): Collection
+    {
+        return $this->leaveCompanies;
+    }
+
+    public function addLeaveCompany(LeaveCompany $leaveCompany): self
+    {
+        if (!$this->leaveCompanies->contains($leaveCompany)) {
+            $this->leaveCompanies->add($leaveCompany);
+            $leaveCompany->setEmployeeOut($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLeaveCompany(LeaveCompany $leaveCompany): self
+    {
+        if ($this->leaveCompanies->removeElement($leaveCompany)) {
+            // set the owning side to null (unless already changed)
+            if ($leaveCompany->getEmployeeOut() === $this) {
+                $leaveCompany->setEmployeeOut(null);
+            }
+        }
 
         return $this;
     }

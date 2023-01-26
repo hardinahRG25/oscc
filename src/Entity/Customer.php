@@ -16,13 +16,13 @@ class Customer
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 25)]
+    #[ORM\Column(length: 75)]
     private ?string $name_company = null;
 
-    #[ORM\Column(length: 45)]
+    #[ORM\Column(length: 75)]
     private ?string $size_company = null;
 
-    #[ORM\Column(length: 45)]
+    #[ORM\Column(length: 75)]
     private ?string $location = null;
 
     #[ORM\Column(type: Types::TEXT)]
@@ -40,13 +40,13 @@ class Customer
     #[ORM\Column(length: 45, nullable: true)]
     private ?string $annual_closure = null;
 
-    #[ORM\Column(length: 45, nullable: true)]
+    #[ORM\Column(length: 245, nullable: true)]
     private ?string $important_criteria = null;
 
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $notes = null;
 
-    #[ORM\Column(length: 45, nullable: true)]
+    #[ORM\Column(length: 245, nullable: true)]
     private ?string $pc_specification = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]

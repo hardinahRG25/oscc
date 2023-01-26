@@ -3,48 +3,70 @@
 # **Outil de suivi des collaborateurs et clients**
 
 # **Features**
-- Personnalisation tableau de bord
+- Creation dasboard
 
 # **Requirements**
-- PHP >= 8.1
-- Symfony >6.*
-- MySQL
-
-# **Credits**
-[OSCC](https://github.com/hardnovity21/oscc) -  initié par l'equipe Unit manager et développé par Toky et Hardinah. Architecte Toky Ralala.
-
-## License information
-novity 2022
+- docker
+- docker-compose
+- NodeJs
 
 # **SETUP**
-1 - Install all dependencies :
+#### Build the docker containers :
+
+Ensure that docker and docker-compose are installed and the docker service is running
+
+Then inside the docker folder, run
 
 ~~~
-    composer install
+    docker-compose -f docker-compose.yml -f pma.yml build
+~~~
+
+#### Run the docker containers
+Then simply execute
+
+~~~
+    docker-compose -f docker-compose.yml -f pma.yml up
 ~~~
 
 
-2 - Create database using the next command:
 ~~~
-    php bin/console doctrine:schema:create
-~~~
-
-3 - Create scheme using migration command:
-~~~
-    php bin/console doctrine:migrations:migrate
+    docker exec -it test-php composer install
 ~~~
 
-4 - You will need to populate your database using fixtures for login.
+
+#### Create scheme using migration command:
+~~~
+    docker exec -it test-php php bin/console doctrine:migrations:migrate
+~~~
+
+#### You will need to populate your database using fixtures for login.
 
 Run:
 
 ~~~
-    php bin/console doctrine:fixtures:load
+    docker exec -it test-php php bin/console doctrine:fixtures:load
+~~~
+
+#### Install webpack
+~~~
+    npm install
 ~~~
 
 And use the next credentials to login.
 
 - Username : "admin@novity.io"
-- Password : "admin12345"
+- Password : "admin123456"
+
+
+##Test
+
+web : http://127.0.0.1:8011/
+phpmyadmin : http://127.0.0.1:4011/
 
 **APPRECIE**
+
+# **Credits**
+[OSCC](https://github.com/hardnovity21/oscc) -  Project by Novity.
+
+## License information
+novity 2022

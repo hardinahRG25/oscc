@@ -4,10 +4,10 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserType;
-use App\Service\Conversion;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\AbstractQuery;
 use App\Repository\UserRepository;
+use App\Repository\MissionRepository;
 use Omines\DataTablesBundle\DataTableState;
 use Omines\DataTablesBundle\DataTableFactory;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,17 +20,40 @@ use Omines\DataTablesBundle\Column\DateTimeColumn;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORM\SearchCriteriaProvider;
+use App\Service\Conversion;
 
 #[Route('/collaborateur')]
 class UserController extends AbstractController
 {
-	public function __construct(Conversion $conversion)
+	/**
+	 * Constructor
+	 *
+	 * @param Conversion $conversion
+	 */
+
+	private $convert;
+	private $statusClassColor;
+
+	public function __construct()
 	{
-		$this->convert = $conversion;
 	}
-	#[Route('/', name: 'app_user_index', methods: ['POST', 'GET'])]
-	public function index(UserRepository $userRepository, Request $request, DataTableFactory $dataTableFactory): Response
+
+	/**
+	 * Index page
+	 *
+	 * @param UserRepository $userRepository
+	 * @param Request $request
+	 * @param DataTableFactory $dataTableFactory
+	 * @return Response array list
+	 */
+
+
+	#[Route('/list', name: 'app_user_list', methods: ['POST', 'GET'])]
+	public function index(UserRepository $userRepository, Request $request, DataTableFactory $dataTableFactory, Conversion $conversion): Response
 	{
+
+		// $conversion = $this->container->get('oscc.conversion');
+		$this->convert = $conversion;
 		$table = $dataTableFactory->create()
 			->add('id', NumberColumn::class, ['visible' => false])
 			->add('fullName', TextColumn::class, [
@@ -80,6 +103,9 @@ class UserController extends AbstractController
 			->add('contacts', TextColumn::class, [
 				'label' => 'Télephone'
 			])
+			->add('email', TextColumn::class, [
+				'label' => 'Email'
+			])
 			->add('location', TextColumn::class, [
 				'label' => 'Pays de localisation'
 			])
@@ -104,6 +130,7 @@ class UserController extends AbstractController
 							u.birth_date,
 							u.gender,
 							u.date_entry,
+							u.email,
 							u.matrimonial_status,
 							CONCAT(u.matrimonial_status, ', ', u.childNumber) AS family,
 							TIMESTAMPDIFF(MONTH, u.date_entry, CURRENT_TIMESTAMP()) AS monthsCount,
@@ -112,7 +139,8 @@ class UserController extends AbstractController
 							u.original_company,
 							u.contacts,
 							u.contract_type")
-						->from(User::class, 'u');
+						->from(User::class, 'u')
+						->orderBy('u.firstname,u.lastname,u.id', 'ASC');
 				}
 			])
 			->handleRequest($request);
@@ -127,6 +155,13 @@ class UserController extends AbstractController
 		);
 	}
 
+	/**
+	 * add new
+	 *
+	 * @param Request $request
+	 * @param UserRepository $userRepository
+	 * @return Response
+	 */
 	#[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
 	public function new(Request $request, UserRepository $userRepository): Response
 	{
@@ -137,15 +172,19 @@ class UserController extends AbstractController
 		if ($form->isSubmitted() && $form->isValid()) {
 			$userRepository->add($user, true);
 
-			return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+			return $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
 		}
 
 		return $this->renderForm('user/new.html.twig', [
 			'user' => $user,
 			'form' => $form,
+			'missions' => []
 		]);
 	}
 
+	/**
+	 * 
+	 */
 	#[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
 	public function show(User $user): Response
 	{
@@ -154,9 +193,28 @@ class UserController extends AbstractController
 		]);
 	}
 
+	/**
+	 * edit user
+	 * @param Request $request
+	 * @param UserRepository $userRepository
+	 * @return Response
+	 */
 	#[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-	public function edit(Request $request, User $user, UserRepository $userRepository): Response
+	public function edit(Request $request, User $user, UserRepository $userRepository, MissionRepository $missionRepository): Response
 	{
+		// $list_mission_user = $missionRepository->findBy(
+		// 	[
+		// 		'employee' => intval($request->get('id'))
+		// 	],
+		// 	[
+		// 		'date_start' => 'DESC'
+		// 	]
+		// );
+		$listMissions = $missionRepository->findMissionUserSelected(intval($request->get('id')));
+
+		// var_dump($missions[0]['customer']['businessManager']['firstname'] . ' ' . $missions[0]['customer']['businessManager']['lastname']);
+		// die;
+
 		$form = $this->createForm(UserType::class, $user);
 		$form->remove('password');
 		$form->handleRequest($request);
@@ -164,15 +222,19 @@ class UserController extends AbstractController
 		if ($form->isSubmitted() && $form->isValid()) {
 			$userRepository->add($user, true);
 
-			return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+			return $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
 		}
 
 		return $this->renderForm('user/edit.html.twig', [
 			'user' => $user,
 			'form' => $form,
+			'missions' => $listMissions
 		]);
 	}
 
+	/**
+	 * 
+	 */
 	#[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
 	public function delete(Request $request, User $user, UserRepository $userRepository): Response
 	{
@@ -180,6 +242,6 @@ class UserController extends AbstractController
 			$userRepository->remove($user, true);
 		}
 
-		return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+		return $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
 	}
 }

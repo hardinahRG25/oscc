@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{% trans %}Output{% endtrans %}
+{% endblock %}
+
+{% block body %}
+	<div class="row">
+		<div class="col-12" id="containertable">
+			<div class="card my-4">
+				<div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
+					<div class="bg-gradient-primary shadow-primary border-radius-lg pt-4 pb-3">
+						<div class="row justify-content-md-center">
+							<div class="col-10">
+								<span>
+									<h6 class="text-white text-capitalize ps-3">{% trans %}Employee{% endtrans %}</h6>
+								</span>
+							</div>
+							{% if 'ROLE_ADMIN' in app.user.roles %}
+								<div class="col-2">
+									<a href="{{ path('app_leave_company_new') }}">
+										<button class="btn btn-outline-primary" type="button">
+											<span class="btn-inner--icon">
+												<i class="material-icons">add</i>
+											</span>
+											<span class="btn-inner--text">{% trans %}New{% endtrans %}</span>
+										</button>
+									</a>
+								</div>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+				<div class="card-body pt-4 p-3">
+					<a href="edit" id="edit">Pesonnaliser table</a>
+					<div id="collab-list" class="table-responsive p-0">
+						<table id="example" class="display" style="width:100%">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>{% trans %}Employee{% endtrans %}</th>
+									<th>{% trans %}Date resignation{% endtrans %}</th>
+									<th>{% trans %}Reason resignation{% endtrans %}</th>
+									<th>{% trans %}Created at{% endtrans %}</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for leave_company in leave_companies %}
+									<tr>
+										<td>{{ leave_company.id }}</td>
+										<td>{{ leave_company.dateResignation ? leave_company.dateResignation|date('Y-m-d') : '' }}</td>
+										<td class="td-text">{{ leave_company.reasonResignation }}</td>
+										<td>{{ leave_company.createdAt ? leave_company.createdAt|date('Y-m-d') : '' }}</td>
+										<td>
+											<a href="{{ path('app_leave_company_show', {'id': leave_company.id}) }}">show</a>
+											<a href="{{ path('app_leave_company_edit', {'id': leave_company.id}) }}">edit</a>
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="5">no records found</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+							<tfoot>
+								<tr>
+									<th>#</th>
+									<th>{% trans %}Date resignation{% endtrans %}</th>
+									<th>{% trans %}Reason resignation{% endtrans %}</th>
+									<th>{% trans %}Created at{% endtrans %}</th>
+									<th></th>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% block javascripts %}
+		{{ parent() }}
+	{% endblock %}
+	<script>
+		$(document).ready(function () {
+$('#example').DataTable();
+});
+	</script>
+
+
+{% endblock %}

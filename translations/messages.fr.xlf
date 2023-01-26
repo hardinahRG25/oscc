@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="fr" target-language="fr" datatype="plaintext" original="file.ext">
+    <header>
+      <tool tool-id="symfony" tool-name="Symfony"/>
+    </header>
+    <body>
+      <trans-unit id="yPHGEV3" resname="Bad credentials.">
+        <source>Bad credentials.</source>
+        <target>Identifiants invalides !</target>
+      </trans-unit>
+      <trans-unit id="OScQgeY" resname="The presented password cannot be empty.">
+        <source>The presented password cannot be empty.</source>
+        <target>Mot de passe requis !</target>
+      </trans-unit>
+      <trans-unit id="WQhtTuZ" resname="The presented password is invalid.">
+        <source>The presented password is invalid.</source>
+        <target>Mot de passe incorrect !</target>
+      </trans-unit>
+      <trans-unit id="84JO6ni" resname="datatable.datatable.processing">
+        <source>datatable.datatable.processing</source>
+        <target>__datatable.datatable.processing</target>
+      </trans-unit>
+      <trans-unit id="ooGqUxl" resname="datatable.datatable.search">
+        <source>datatable.datatable.search</source>
+        <target>__datatable.datatable.search</target>
+      </trans-unit>
+      <trans-unit id="pVVBLyB" resname="datatable.datatable.lengthMenu">
+        <source>datatable.datatable.lengthMenu</source>
+        <target>__datatable.datatable.lengthMenu</target>
+      </trans-unit>
+      <trans-unit id="8kW5jOB" resname="datatable.datatable.info">
+        <source>datatable.datatable.info</source>
+        <target>__datatable.datatable.info</target>
+      </trans-unit>
+      <trans-unit id="5AiZRiE" resname="datatable.datatable.infoEmpty">
+        <source>datatable.datatable.infoEmpty</source>
+        <target>__datatable.datatable.infoEmpty</target>
+      </trans-unit>
+      <trans-unit id="LvXsJxr" resname="datatable.datatable.infoFiltered">
+        <source>datatable.datatable.infoFiltered</source>
+        <target>__datatable.datatable.infoFiltered</target>
+      </trans-unit>
+      <trans-unit id="Q_GtPoG" resname="datatable.datatable.infoPostFix">
+        <source>datatable.datatable.infoPostFix</source>
+        <target>__datatable.datatable.infoPostFix</target>
+      </trans-unit>
+      <trans-unit id="6fBMelE" resname="datatable.datatable.loadingRecords">
+        <source>datatable.datatable.loadingRecords</source>
+        <target>__datatable.datatable.loadingRecords</target>
+      </trans-unit>
+      <trans-unit id="FjSGUmo" resname="datatable.datatable.zeroRecords">
+        <source>datatable.datatable.zeroRecords</source>
+        <target>__datatable.datatable.zeroRecords</target>
+      </trans-unit>
+      <trans-unit id="eDCpKkz" resname="datatable.datatable.emptyTable">
+        <source>datatable.datatable.emptyTable</source>
+        <target>__datatable.datatable.emptyTable</target>
+      </trans-unit>
+      <trans-unit id="yq95Ed8" resname="datatable.datatable.searchPlaceholder">
+        <source>datatable.datatable.searchPlaceholder</source>
+        <target>__datatable.datatable.searchPlaceholder</target>
+      </trans-unit>
+      <trans-unit id="OnNPCrp" resname="datatable.datatable.paginate.first">
+        <source>datatable.datatable.paginate.first</source>
+        <target>__datatable.datatable.paginate.first</target>
+      </trans-unit>
+      <trans-unit id="U1MAKT0" resname="datatable.datatable.paginate.previous">
+        <source>datatable.datatable.paginate.previous</source>
+        <target>__datatable.datatable.paginate.previous</target>
+      </trans-unit>
+      <trans-unit id="AQi8n1_" resname="datatable.datatable.paginate.next">
+        <source>datatable.datatable.paginate.next</source>
+        <target>__datatable.datatable.paginate.next</target>
+      </trans-unit>
+      <trans-unit id="TbYeaxQ" resname="datatable.datatable.paginate.last">
+        <source>datatable.datatable.paginate.last</source>
+        <target>__datatable.datatable.paginate.last</target>
+      </trans-unit>
+      <trans-unit id="cIFz71W" resname="datatable.datatable.aria.sortAscending">
+        <source>datatable.datatable.aria.sortAscending</source>
+        <target>__datatable.datatable.aria.sortAscending</target>
+      </trans-unit>
+      <trans-unit id="tTSgqiK" resname="datatable.datatable.aria.sortDescending">
+        <source>datatable.datatable.aria.sortDescending</source>
+        <target>__datatable.datatable.aria.sortDescending</target>
+      </trans-unit>
+      <trans-unit id="J3DLi5j" resname="Login page">
+        <source>Login page</source>
+        <target>Authentification</target>
+      </trans-unit>
+      <trans-unit id="wYmEDPf" resname="Log in">
+        <source>Log in</source>
+        <target>Connectez-vous</target>
+      </trans-unit>
+      <trans-unit id="lpzL089" resname="Email">
+        <source>Email</source>
+        <target>Email</target>
+      </trans-unit>
+      <trans-unit id="588_9PF" resname="Password">
+        <source>Password</source>
+        <target>Mot de passe</target>
+      </trans-unit>
+      <trans-unit id="YdaVBBA" resname="Connexion">
+        <source>Connexion</source>
+        <target>Se connecter</target>
+      </trans-unit>
+      <trans-unit id="Z7aWRoY" resname="Dashboard">
+        <source>Dashboard</source>
+        <target>Tableau de bord</target>
+      </trans-unit>
+      <trans-unit id="FAFOalc" resname="Employee">
+        <source>Employee</source>
+        <target>Collaborateur</target>
+      </trans-unit>
+      <trans-unit id="byAvVKe" resname="List">
+        <source>List</source>
+        <target>Liste</target>
+      </trans-unit>
+      <trans-unit id="GP3VSbL" resname="New">
+        <source>New</source>
+        <target>Nouveau</target>
+      </trans-unit>
+      <trans-unit id="mo1OlEw" resname="Mood employee">
+        <source>Mood employee</source>
+        <target>Suivi</target>
+      </trans-unit>
+      <trans-unit id="4mfTQ4I" resname="Profil">
+        <source>Profil</source>
+        <target>Profile</target>
+      </trans-unit>
+      <trans-unit id="aoMq9J3" resname="log out">
+        <source>log out</source>
+        <target>Se déconnecter</target>
+      </trans-unit>
+      <trans-unit id="XB_sesZ" resname="Employee and Customer Tracking Tool">
+        <source>Employee and Customer Tracking Tool</source>
+        <target>Outil suivi collaborateur client</target>
+      </trans-unit>
+      <trans-unit id="vzdjODq" resname="Customer">
+        <source>Customer</source>
+        <target>Client</target>
+      </trans-unit>
+      <trans-unit id="5rhb_.V" resname="Mission">
+        <source>Mission</source>
+        <target>Mission</target>
+      </trans-unit>
+      <trans-unit id="tTGBpNh" resname="My account">
+        <source>My account</source>
+        <target>Mon compte</target>
+      </trans-unit>
+      <trans-unit id="bAksnKA" resname="Basic information">
+        <source>Basic information</source>
+        <target>Information générale</target>
+      </trans-unit>
+      <trans-unit id="BqVxIo." resname="Personal information">
+        <source>Personal information</source>
+        <target>Information personnel</target>
+      </trans-unit>
+      <trans-unit id="qbGiCZR" resname="Qualification &amp; stack">
+        <source>Qualification &amp; stack</source>
+        <target><![CDATA[Qualification & technologies]]></target>
+      </trans-unit>
+      <trans-unit id="69rZukx" resname="Others">
+        <source>Others</source>
+        <target>Autre(s)</target>
+      </trans-unit>
+      <trans-unit id="bfG7GKW" resname="Skill">
+        <source>Skill</source>
+        <target>Compétences</target>
+      </trans-unit>
+      <trans-unit id="NqeY4.O" resname="Training">
+        <source>Training</source>
+        <target>Formation(s)</target>
+      </trans-unit>
+      <trans-unit id="Hcg.YF7" resname="Monitoring">
+        <source>Monitoring</source>
+        <target>Suivi</target>
+      </trans-unit>
+      <trans-unit id="skOby43" resname="Output">
+        <source>Output</source>
+        <target>Sortie</target>
+      </trans-unit>
+      <trans-unit id="H0uzsqY" resname="Profil picture">
+        <source>Profil picture</source>
+        <target>Photo de profile</target>
+      </trans-unit>
+      <trans-unit id="FbYZdLJ" resname="Location">
+        <source>Location</source>
+        <target>Localisation</target>
+      </trans-unit>
+      <trans-unit id="htiPHRy" resname="Lastname">
+        <source>Lastname</source>
+        <target>Nom</target>
+      </trans-unit>
+      <trans-unit id="ZHz6kbI" resname="Firstname">
+        <source>Firstname</source>
+        <target>Prénom(s)</target>
+      </trans-unit>
+      <trans-unit id="wrwpLIB" resname="Password confirm">
+        <source>Password confirm</source>
+        <target>Confirmation mot de passe</target>
+      </trans-unit>
+      <trans-unit id="9pSqqNo" resname="The passwords do not match.">
+        <source>The passwords do not match.</source>
+        <target>Les mots de passes ne se correspondent pas.</target>
+      </trans-unit>
+      <trans-unit id="cB0CHQj" resname="Country">
+        <source>Country</source>
+        <target>Pays d'origine</target>
+      </trans-unit>
+      <trans-unit id=".DP3Mkb" resname="City">
+        <source>City</source>
+        <target>Ville</target>
+      </trans-unit>
+      <trans-unit id="UPGHjST" resname="District">
+        <source>District</source>
+        <target>Quartier</target>
+      </trans-unit>
+      <trans-unit id=".Sf9ozO" resname="Contract type">
+        <source>Contract type</source>
+        <target>Type de contrat</target>
+      </trans-unit>
+      <trans-unit id="iVulF6m" resname="Choose...">
+        <source>Choose...</source>
+        <target>Choisissez...</target>
+      </trans-unit>
+      <trans-unit id="pnsEzVx" resname="Worker">
+        <source>Worker</source>
+        <target>Salarié</target>
+      </trans-unit>
+      <trans-unit id="2b1tmuR" resname="Independant">
+        <source>Independant</source>
+        <target>Independant</target>
+      </trans-unit>
+      <trans-unit id="y4miW8f" resname="Unit manager">
+        <source>Unit manager</source>
+        <target>Unit manager</target>
+      </trans-unit>
+      <trans-unit id="xhOKv6a" resname="Birthday">
+        <source>Birthday</source>
+        <target>Date d'anniversaire</target>
+      </trans-unit>
+      <trans-unit id="mNDS8fA" resname="Marital status">
+        <source>Marital status</source>
+        <target>Situation matrimonial</target>
+      </trans-unit>
+      <trans-unit id="rOC2z21" resname="Celibataire">
+        <source>Celibataire</source>
+        <target>Celibataire</target>
+      </trans-unit>
+      <trans-unit id="ZOETSX0" resname="Married">
+        <source>Married</source>
+        <target>Marié(e)</target>
+      </trans-unit>
+      <trans-unit id="oEYw74v" resname="Gender">
+        <source>Gender</source>
+        <target>Genre</target>
+      </trans-unit>
+      <trans-unit id="A.jBJz4" resname="Male">
+        <source>Male</source>
+        <target>Masculin</target>
+      </trans-unit>
+      <trans-unit id="6MyoCK5" resname="Female">
+        <source>Female</source>
+        <target>Féminin</target>
+      </trans-unit>
+      <trans-unit id="V_cFxLG" resname="Child number">
+        <source>Child number</source>
+        <target>Nombre d'enfant</target>
+      </trans-unit>
+      <trans-unit id="ClwzNVz" resname="Country location">
+        <source>Country location</source>
+        <target>Pays de localisation</target>
+      </trans-unit>
+      <trans-unit id="PN..9Ga" resname="Adress">
+        <source>Adress</source>
+        <target>Addresse</target>
+      </trans-unit>
+      <trans-unit id="QO9AXSu" resname="Phone principal">
+        <source>Phone principal</source>
+        <target>Télephone principal</target>
+      </trans-unit>
+      <trans-unit id="LshrToU" resname="Phone secondary">
+        <source>Phone secondary</source>
+        <target>Télephone secondaire</target>
+      </trans-unit>
+      <trans-unit id="J50jOz7" resname="Change location">
+        <source>Change location</source>
+        <target>Changement localisation</target>
+      </trans-unit>
+      <trans-unit id="YKU0nx." resname="home university">
+        <source>home university</source>
+        <target>Université d’origine</target>
+      </trans-unit>
+      <trans-unit id="yRDUdNz" resname="General">
+        <source>General</source>
+        <target>Générale</target>
+      </trans-unit>
+      <trans-unit id="16jERga" resname="See all">
+        <source>See all</source>
+        <target>Tout voir</target>
+      </trans-unit>
+      <trans-unit id="rWF6D91" resname="Job">
+        <source>Job</source>
+        <target>Poste</target>
+      </trans-unit>
+      <trans-unit id="zoEzKog" resname="Technos">
+        <source>Technos</source>
+        <target>Technos</target>
+      </trans-unit>
+      <trans-unit id="gWlpMQG" resname="Start date">
+        <source>Start date</source>
+        <target>Date de début</target>
+      </trans-unit>
+      <trans-unit id="FDA6oMS" resname="End date">
+        <source>End date</source>
+        <target>Date de fin</target>
+      </trans-unit>
+      <trans-unit id="T8UqPEx" resname="Duration">
+        <source>Duration</source>
+        <target>Durée</target>
+      </trans-unit>
+      <trans-unit id="kg5BPH1" resname="Status">
+        <source>Status</source>
+        <target>Etat</target>
+      </trans-unit>
+      <trans-unit id="AmXOyYz" resname="Reason mission end">
+        <source>Reason mission end</source>
+        <target>Motif de la fin de mission</target>
+      </trans-unit>
+      <trans-unit id="zMSYt3r" resname="Account Manager">
+        <source>Account Manager</source>
+        <target>Account Manager</target>
+      </trans-unit>
+      <trans-unit id="Cm9R6Im" resname="Project Manager">
+        <source>Project Manager</source>
+        <target>Project Manager</target>
+      </trans-unit>
+      <trans-unit id="6Qqiokn" resname="Training name">
+        <source>Training name</source>
+        <target>Intitulé de la formation</target>
+      </trans-unit>
+      <trans-unit id="8ZPQfDd" resname="Progression">
+        <source>Progression</source>
+        <target>Progression</target>
+      </trans-unit>
+      <trans-unit id="o7UMR2c" resname="State">
+        <source>State</source>
+        <target>Etat</target>
+      </trans-unit>
+      <trans-unit id="PQ1E2Cp" resname="Date resignation">
+        <source>Date resignation</source>
+        <target>Date de sorite</target>
+      </trans-unit>
+      <trans-unit id="Yf7KqaX" resname="Reason resignation">
+        <source>Reason resignation</source>
+        <target>Motif de démission</target>
+      </trans-unit>
+      <trans-unit id="MezHz68" resname="Date d'enregistrement">
+        <source>Date d'enregistrement</source>
+        <target>Date d'enregistrement</target>
+      </trans-unit>
+      <trans-unit id="pseoS6p" resname="Finish">
+        <source>Finish</source>
+        <target>Terminer</target>
+      </trans-unit>
+      <trans-unit id="d1tb_WR" resname="Created at">
+        <source>Created at</source>
+        <target>Création</target>
+      </trans-unit>
+      <trans-unit id="ZZdcs3x" resname="Date output">
+        <source>Date output</source>
+        <target>Date de sortie</target>
+      </trans-unit>
+      <trans-unit id="jPtBCu3" resname="Resignation">
+        <source>Resignation</source>
+        <target>Démission</target>
+      </trans-unit>
+      <trans-unit id="HWieGmw" resname="New output">
+        <source>New output</source>
+        <target>Nouvelle sortie</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

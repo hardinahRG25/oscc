@@ -8,7 +8,7 @@ $(function () {
                 shown: th.css('display') != 'none'
             };
         });
-        var h = ['<div id="tableEditor"><button class="submit" id="btn-1">Afficher</button><ul>'];
+        var h = ['<div id="tableEditor"><button type="submit" class="btn btn-secondary mt-3 submit">Choisir</button><ul>'];
         $.each(headers, function () {
             var checkedView = 'checked';
             h.push('<li><input type="checkbox"', (this.shown ? ' ' + checkedView + ' ' : ' '), ' /> ', this.text, '</li > ');
