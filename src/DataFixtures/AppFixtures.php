@@ -4,10 +4,10 @@ namespace App\DataFixtures;
 
 use DateTime;
 use Faker\Factory;
-use Cassandra\Date;
 use App\Entity\User;
 use Faker\Generator;
 use App\Entity\Customer;
+use App\Service\Generate;
 use App\Entity\University;
 use App\Entity\TypeActivity;
 use App\Entity\BusinessSector;
@@ -23,9 +23,11 @@ class AppFixtures extends Fixture
 	 * @var Generator
 	 */
 	private Generator $faker;
+	private $generate;
 
-	public function __construct()
+	public function __construct(Generate $generate)
 	{
+		$this->generate = $generate;
 		$this->faker = Factory::create('fr_FR');
 	}
 
@@ -70,7 +72,7 @@ class AppFixtures extends Fixture
 			->setChildNumber(mt_rand(0, 5))
 			->setGender($gender[mt_rand(0, 1)])
 			->setLocation('Antananarivo')
-			->setContacts('+26134 56 234 56')
+			->setContacts($this->generate->generateNumber('mg'))
 			->setTechDominantCv($langage[mt_rand(0, count($langage) - 1)])
 			->setTechMaster($langage[mt_rand(0, count($langage) - 1)])
 			->setTechActive($langage[mt_rand(0, count($langage) - 1)])
