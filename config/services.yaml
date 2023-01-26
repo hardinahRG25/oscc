@@ -45,6 +45,9 @@ services:
     #         # - $logger : '@logger'
     #         - $max_month : '%app.max_month%'
 
+
+    oscc.generate:
+        alias: 'App\Service\Generate'
            
 
     # add more service definitions when explicit configuration is needed
