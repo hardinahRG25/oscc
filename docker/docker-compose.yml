@@ -44,8 +44,8 @@ services:
     user: "1000:adm"
     environment:
       MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: test-database
-      MYSQL_USER: test-user
+      MYSQL_DATABASE: db_oscc
+      MYSQL_USER: toto
       MYSQL_PASSWORD: password
     networks:
       - test-network
