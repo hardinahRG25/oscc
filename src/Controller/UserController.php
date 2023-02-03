@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use Carbon\Carbon;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Service\Conversion;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\AbstractQuery;
 use App\Repository\UserRepository;
@@ -20,7 +22,6 @@ use Omines\DataTablesBundle\Column\DateTimeColumn;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORMAdapter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Omines\DataTablesBundle\Adapter\Doctrine\ORM\SearchCriteriaProvider;
-use App\Service\Conversion;
 
 #[Route('/collaborateur')]
 class UserController extends AbstractController
@@ -126,7 +127,7 @@ class UserController extends AbstractController
 					$builder
 						->select("
 							u.id,
-							CONCAT(u.lastname, ' ', u.firstname) AS fullName,
+							CONCAT(u.lastname, ' ', UPPER(u.firstname)) AS fullName,
 							u.birth_date,
 							u.gender,
 							u.date_entry,
@@ -140,7 +141,8 @@ class UserController extends AbstractController
 							u.contacts,
 							u.contract_type")
 						->from(User::class, 'u')
-						->orderBy('u.firstname,u.lastname,u.id', 'ASC');
+						->orderBy('u.firstname,u.lastname,u.id', 'ASC')
+						->addOrderBy('u.job', 'ASC');
 				}
 			])
 			->handleRequest($request);
@@ -172,7 +174,7 @@ class UserController extends AbstractController
 		if ($form->isSubmitted() && $form->isValid()) {
 			$userRepository->add($user, true);
 
-			return $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
+			return  $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
 		}
 
 		return $this->renderForm('user/new.html.twig', [
@@ -202,19 +204,19 @@ class UserController extends AbstractController
 	#[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
 	public function edit(Request $request, User $user, UserRepository $userRepository, MissionRepository $missionRepository): Response
 	{
-		// $list_mission_user = $missionRepository->findBy(
-		// 	[
-		// 		'employee' => intval($request->get('id'))
-		// 	],
-		// 	[
-		// 		'date_start' => 'DESC'
-		// 	]
-		// );
+
 		$listMissions = $missionRepository->findMissionUserSelected(intval($request->get('id')));
-
-		// var_dump($missions[0]['customer']['businessManager']['firstname'] . ' ' . $missions[0]['customer']['businessManager']['lastname']);
-		// die;
-
+		// Carbon::setFallBackLocale('fr');
+		for ($i = 0; $i < count($listMissions); $i++) {
+			$listMissions[$i]['status'] = 'TERMINE';
+			$date = new Carbon($listMissions[$i]['date_start']);
+			$now = Carbon::now();
+			$diffDate = $date->locale('fr')->diffForHumans($now);
+			$listMissions[$i]['duration'] = $diffDate;
+			if (empty($listMissions[$i]['date_end']) || $listMissions[$i]['date_end'] == null) {
+				$listMissions[$i]['status'] = 'EN COURS';
+			}
+		}
 		$form = $this->createForm(UserType::class, $user);
 		$form->remove('password');
 		$form->handleRequest($request);
