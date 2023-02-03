@@ -350,10 +350,19 @@
 						<tbody>
 							{% if missions is not empty %}
 								{% for mission in missions %}
-									{{ dump(mission) }}
-									{{ dump(mission.customer) }}
-									{{ dump(mission.customer.businessManager) }}
-
+									<tr>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.company }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.fullNameEmployee }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.job }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7"></td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.date_start|date('d/m/Y') }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.date_end|date('d/m/Y') }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.duration }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.status }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.reason_contract_end }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.businessManager }}</td>
+										<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">{{ mission.unitManager }}</td>
+									</tr>
 								{% endfor %}
 							{% endif %}
 						</tbody>
@@ -414,7 +423,6 @@
 	</div>
 	<!-- End Training user -->
 </div>
-
 <div class="d-flex justify-content-end mt-6">
 	<button class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 </div>
