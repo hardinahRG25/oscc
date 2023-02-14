@@ -7,6 +7,7 @@ parameters:
     # app.max_month: '%env(MAX_MONTH)%'
     app.max_month: 12 //a modifier vers class
     app.pagination : 50
+    app.mail_default_from:  novitydevtest.noreply@gmail.com
 
 services:
     # default configuration for services in *this* file
@@ -50,6 +51,10 @@ services:
 
     oscc.generate:
         alias: 'App\Service\Generate'
+
+    App\Mail\ChangeStatusMail:
+        arguments:
+            - '%app.mail_default_from%'
            
 
     # add more service definitions when explicit configuration is needed
