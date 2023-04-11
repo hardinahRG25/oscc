@@ -5,7 +5,9 @@ namespace App\Controller;
 use Carbon\Carbon;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Mail\ChangeStatusMail;
 use App\Service\Conversion;
+use App\Service\MailerService;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\ORM\AbstractQuery;
 use App\Repository\UserRepository;
@@ -127,7 +129,7 @@ class UserController extends AbstractController
 					$builder
 						->select("
 							u.id,
-							CONCAT(u.lastname, ' ', UPPER(u.firstname)) AS fullName,
+							CONCAT(u.firstname, ' ', UPPER(u.lastname)) AS fullName,
 							u.birth_date,
 							u.gender,
 							u.date_entry,
@@ -202,8 +204,15 @@ class UserController extends AbstractController
 	 * @return Response
 	 */
 	#[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-	public function edit(Request $request, User $user, UserRepository $userRepository, MissionRepository $missionRepository): Response
-	{
+	public function edit(
+		Request $request,
+		User $user,
+		UserRepository $userRepository,
+		MissionRepository $missionRepository,
+		MailerService $mailer,
+		ChangeStatusMail $email
+	): Response {
+		$oldContractType = $user->getContractType();
 
 		$listMissions = $missionRepository->findMissionUserSelected(intval($request->get('id')));
 		// Carbon::setFallBackLocale('fr');
@@ -222,7 +231,18 @@ class UserController extends AbstractController
 		$form->handleRequest($request);
 
 		if ($form->isSubmitted() && $form->isValid()) {
+			$newContractType = $user->getContractType();
 			$userRepository->add($user, true);
+
+			$this->addFlash(
+				'success',
+				'Utilisateur bien modifié'
+			);
+
+			if ($oldContractType != $newContractType) {
+				$email->to($user->getEmail());
+				$mailer->sendEmail($email);
+			}
 
 			return $this->redirectToRoute('app_user_list', [], Response::HTTP_SEE_OTHER);
 		}

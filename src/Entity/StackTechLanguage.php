@@ -27,6 +27,15 @@ class StackTechLanguage
     #[ORM\ManyToMany(targetEntity: Mission::class, mappedBy: 'techPrincipal')]
     private Collection $missions;
 
+    #[ORM\Column(length: 75, nullable: true)]
+    private ?string $maintener = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $languageLevel = null;
+
+    #[ORM\Column]
+    private ?bool $openSource = null;
+
 
     public function __construct()
     {
@@ -119,6 +128,42 @@ class StackTechLanguage
         if ($this->missions->removeElement($mission)) {
             $mission->removeTechPrincipal($this);
         }
+
+        return $this;
+    }
+
+    public function getMaintener(): ?string
+    {
+        return $this->maintener;
+    }
+
+    public function setMaintener(?string $maintener): self
+    {
+        $this->maintener = $maintener;
+
+        return $this;
+    }
+
+    public function getLanguageLevel(): ?string
+    {
+        return $this->languageLevel;
+    }
+
+    public function setLanguageLevel(string $languageLevel): self
+    {
+        $this->languageLevel = $languageLevel;
+
+        return $this;
+    }
+
+    public function isOpenSource(): ?bool
+    {
+        return $this->openSource;
+    }
+
+    public function setOpenSource(bool $openSource): self
+    {
+        $this->openSource = $openSource;
 
         return $this;
     }

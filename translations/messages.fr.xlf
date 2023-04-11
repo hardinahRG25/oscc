@@ -381,6 +381,10 @@
         <source>New output</source>
         <target>Nouvelle sortie</target>
       </trans-unit>
+      <trans-unit id="JhJ2WWy" resname="New mission">
+        <source>New mission</source>
+        <target>Nouvelle mission</target>
+      </trans-unit>
     </body>
   </file>
 </xliff>

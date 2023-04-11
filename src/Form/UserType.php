@@ -32,11 +32,12 @@ class UserType extends AbstractType
 	{
 		$this->translator = $translator;
 	}
+
 	public function buildForm(FormBuilderInterface $builder, array $options): void
 	{
 		$builder
 			->add('imageFile', VichImageType::class, [
-				'label' => $this->translator->trans('Profil picture'),
+				'label' => 'profil_picture',
 				'label_attr' => [
 					'class' => 'form-label mt-4'
 				],
@@ -47,14 +48,14 @@ class UserType extends AbstractType
 					'minlength' => '2',
 					'maxlength' => '150',
 				],
-				'label' => $this->translator->trans('Firstname')
+				'label' => 'firstname'
 			])
 			->add('lastname', TextType::class, [
 				'attr' => [
 					'minlength' => '2',
 					'maxlength' => '150',
 				],
-				'label' => $this->translator->trans('Lastname')
+				'label' => 'Lastname'
 			])
 			->add('email', EmailType::class)
 			->add('password', RepeatedType::class, [
@@ -256,7 +257,7 @@ class UserType extends AbstractType
 	public function configureOptions(OptionsResolver $resolver): void
 	{
 		$resolver->setDefaults([
-			'data_class' => User::class,
+			'translation_domain' => 'form',
 		]);
 	}
 }

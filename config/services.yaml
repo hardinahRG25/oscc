@@ -4,7 +4,10 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
-    app.max_month: '%env(MAX_MONTH)%'
+    # app.max_month: '%env(MAX_MONTH)%'
+    app.max_month: 12 //a modifier vers class
+    app.pagination : 50
+    app.mail_default_from:  novitydevtest.noreply@gmail.com
 
 services:
     # default configuration for services in *this* file
@@ -48,6 +51,10 @@ services:
 
     oscc.generate:
         alias: 'App\Service\Generate'
+
+    App\Mail\ChangeStatusMail:
+        arguments:
+            - '%app.mail_default_from%'
            
 
     # add more service definitions when explicit configuration is needed

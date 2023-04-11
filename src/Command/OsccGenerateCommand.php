@@ -33,6 +33,7 @@ class OsccGenerateCommand extends Command
     {
         $this
             ->addArgument('country',  InputArgument::REQUIRED, 'The country for which you want to generate a phone number')
+            ->addOption('number', null, InputOption::VALUE_REQUIRED, 'Number')
             ->setDescription('Generate a random phone number by country');
     }
 
@@ -40,9 +41,10 @@ class OsccGenerateCommand extends Command
     {
         $io = new SymfonyStyle($input, $output);
         $arg1 = $input->getArgument('country');
+        $arg2 = $input->getOption('number');
 
         if ($arg1) {
-            $phone = $this->generate->generateNumber($arg1);
+            $phone = $this->generate->generateNumber($arg1, $arg2);
         }
 
         $io->success('New phone number : ' . $arg1 . ' => ' . $phone);
