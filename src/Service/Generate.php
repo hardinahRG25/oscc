@@ -11,16 +11,14 @@ class Generate
     {
     }
 
-    public function generateNumber(string $country)
+    public function generateNumber(string $country, int $sizeNumber)
     {
         switch ($country) {
             case 'fr':
                 $phoneIndex = "33";
-                $sizeNumber = 9;
                 break;
             case 'mg':
                 $phoneIndex = "261";
-                $sizeNumber = 9;
 
             default:
                 break;

@@ -52,7 +52,7 @@ $(function () {
      */
     setTimeout(function () {
         $('.alert').alert('close');
-    }, 1065000);
+    }, 5000);
 
 })
 

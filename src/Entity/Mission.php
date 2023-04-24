@@ -31,7 +31,7 @@ class Mission
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $date_end = null;
 
-    #[ORM\Column(length: 75)]
+    #[ORM\Column(length: 75, name: "mission_type")]
     private ?string $mission_type = null;
 
     #[ORM\Column(length: 200, nullable: true)]
